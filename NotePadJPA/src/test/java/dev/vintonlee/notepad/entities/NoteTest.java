@@ -1,6 +1,6 @@
 package dev.vintonlee.notepad.entities;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -13,11 +13,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class UserTest {
+class NoteTest {
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private User user;
+	private Note note;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -32,20 +32,23 @@ class UserTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		user = em.find(User.class, 1);
+		note = em.find(Note.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		user = null;
+		note = null;
 	}
 
 	@Test
 	@DisplayName("Test primary fields")
 	void test() {
-		assertEquals(1, user.getId());
-		assertEquals("admin", user.getRole());
+		assertEquals(1, note.getId());
+		assertEquals("jobs", note.getTitle());
+		assertEquals("apply to a lot of jobs", note.getText());
+		assertTrue(note.getStarred());
+		assertNull(note.getCreatedAt());
 	}
 
 }

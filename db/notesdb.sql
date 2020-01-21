@@ -35,11 +35,11 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 
 -- -----------------------------------------------------
--- Table `notes`
+-- Table `note`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `notes` ;
+DROP TABLE IF EXISTS `note` ;
 
-CREATE TABLE IF NOT EXISTS `notes` (
+CREATE TABLE IF NOT EXISTS `note` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(200) NOT NULL,
   `text` TEXT NULL,
@@ -79,13 +79,13 @@ COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `notes`
+-- Data for table `note`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `notesdb`;
-INSERT INTO `notes` (`id`, `title`, `text`, `starred`, `created_at`, `updated_at`, `user_id`) VALUES (1, 'jobs', 'apply to a lot of jobs', true, NULL, NULL, 1);
-INSERT INTO `notes` (`id`, `title`, `text`, `starred`, `created_at`, `updated_at`, `user_id`) VALUES (2, 'admin', 'check admin features', false, NULL, NULL, 2);
-INSERT INTO `notes` (`id`, `title`, `text`, `starred`, `created_at`, `updated_at`, `user_id`) VALUES (3, 'water', 'drink more water', false, NULL, NULL, 1);
+INSERT INTO `note` (`id`, `title`, `text`, `starred`, `created_at`, `updated_at`, `user_id`) VALUES (1, 'jobs', 'apply to a lot of jobs', true, NULL, NULL, 1);
+INSERT INTO `note` (`id`, `title`, `text`, `starred`, `created_at`, `updated_at`, `user_id`) VALUES (2, 'admin', 'check admin features', false, NULL, NULL, 2);
+INSERT INTO `note` (`id`, `title`, `text`, `starred`, `created_at`, `updated_at`, `user_id`) VALUES (3, 'water', 'drink more water', false, NULL, NULL, 1);
 
 COMMIT;
 
