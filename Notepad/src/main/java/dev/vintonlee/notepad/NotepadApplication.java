@@ -1,4 +1,4 @@
-package dev.vintonlee.notepad.entities;
+package dev.vintonlee.notepad;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
