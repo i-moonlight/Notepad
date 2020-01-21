@@ -50,5 +50,10 @@ class NoteTest {
 		assertTrue(note.getStarred());
 		assertNull(note.getCreatedAt());
 	}
+	@Test
+	@DisplayName("Test relationship with user")
+	void test2() {
+		assertEquals("admin@notes.com", note.getUser().getEmail());
+	}
 
 }

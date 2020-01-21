@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -43,6 +45,10 @@ public class Note {
 	@UpdateTimestamp
 	@Column(name = "updated_at")
 	private Date updatedAt;
+
+	@ManyToOne()
+	@JoinColumn(name = "user_id")
+	private User user;
 
 	public Note() {
 		super();
@@ -96,6 +102,14 @@ public class Note {
 		this.updatedAt = updatedAt;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -121,7 +135,7 @@ public class Note {
 	@Override
 	public String toString() {
 		return "Note [id=" + id + ", title=" + title + ", text=" + text + ", starred=" + starred + ", createdAt="
-				+ createdAt + ", updatedAt=" + updatedAt + "]";
+				+ createdAt + ", updatedAt=" + updatedAt + ", user=" + user + "]";
 	}
 
 }

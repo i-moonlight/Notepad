@@ -47,5 +47,11 @@ class UserTest {
 		assertEquals(1, user.getId());
 		assertEquals("admin", user.getRole());
 	}
+	
+	@Test
+	@DisplayName("Test relationship with notes")
+	void test2() {
+		assertEquals("apply to a lot of jobs", user.getNotes().get(0).getText());
+	}
 
 }

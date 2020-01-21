@@ -1,15 +1,19 @@
 package dev.vintonlee.notepad.entities;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class User {
@@ -55,6 +59,10 @@ public class User {
 
 	@Column(name = "last_name")
 	private String lastName;
+
+	@JsonIgnoreProperties("user")
+	@OneToMany(mappedBy = "user")
+	private List<Note> notes;
 
 	public User() {
 		super();
@@ -138,6 +146,14 @@ public class User {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public List<Note> getNotes() {
+		return notes;
+	}
+
+	public void setNotes(List<Note> notes) {
+		this.notes = notes;
 	}
 
 	@Override
