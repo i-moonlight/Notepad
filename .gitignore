@@ -1,0 +1,10 @@
+.DS_Store
+Servers
+target
+build
+bin
+.metadata
+# .settings
+.gradle
+*.war
+*.bak
