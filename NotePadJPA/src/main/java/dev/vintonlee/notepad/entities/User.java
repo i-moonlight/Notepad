@@ -63,6 +63,10 @@ public class User {
 	@JsonIgnoreProperties("user")
 	@OneToMany(mappedBy = "user")
 	private List<Note> notes;
+	
+	@JsonIgnoreProperties("user")
+	@OneToMany(mappedBy = "user")
+	private List<Image> images;
 
 	public User() {
 		super();
@@ -154,6 +158,14 @@ public class User {
 
 	public void setNotes(List<Note> notes) {
 		this.notes = notes;
+	}
+
+	public List<Image> getImages() {
+		return images;
+	}
+
+	public void setImages(List<Image> images) {
+		this.images = images;
 	}
 
 	@Override

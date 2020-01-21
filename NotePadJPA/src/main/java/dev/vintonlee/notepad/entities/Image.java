@@ -1,7 +1,6 @@
 package dev.vintonlee.notepad.entities;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,37 +9,30 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
-public class Note {
+public class Image {
 
 //	+------------+--------------+------+-----+-------------------+-----------------------------+
 //	| Field      | Type         | Null | Key | Default           | Extra                       |
 //	+------------+--------------+------+-----+-------------------+-----------------------------+
 //	| id         | int(11)      | NO   | PRI | NULL              | auto_increment              |
-//	| title      | varchar(200) | NO   |     | NULL              |                             |
-//	| text       | text         | YES  |     | NULL              |                             |
-//	| starred    | tinyint(4)   | YES  |     | 0                 |                             |
-//	| created_at | timestamp    | YES  |     | CURRENT_TIMESTAMP |                             |
-//	| updated_at | timestamp    | YES  |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
-//	| user_id    | int(11)      | NO   | MUL | NULL              |                             |
+//	| url_link   | varchar(245) | YES  |     | NULL              |                             |
+//	| created_at | datetime     | YES  |     | CURRENT_TIMESTAMP |                             |
+//	| updated_at | datetime     | YES  |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
+//	| note_id    | int(11)      | YES  | MUL | NULL              |                             |
+//	| user_id    | int(11)      | YES  | MUL | NULL              |                             |
 //	+------------+--------------+------+-----+-------------------+-----------------------------+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	private String title;
-
-	private String text;
-
-	private Boolean starred;
+	@Column(name = "url_link")
+	private String urlLink;
 
 	@CreationTimestamp
 	@Column(name = "created_at")
@@ -49,16 +41,16 @@ public class Note {
 	@UpdateTimestamp
 	@Column(name = "updated_at")
 	private Date updatedAt;
+	
+	@ManyToOne()
+	@JoinColumn(name = "note_id")
+	private Note note;
 
 	@ManyToOne()
 	@JoinColumn(name = "user_id")
 	private User user;
-	
-	@JsonIgnore
-	@OneToMany(mappedBy = "note")
-	private List<Image> images;
 
-	public Note() {
+	public Image() {
 		super();
 	}
 
@@ -70,28 +62,12 @@ public class Note {
 		this.id = id;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getUrlLink() {
+		return urlLink;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getText() {
-		return text;
-	}
-
-	public void setText(String text) {
-		this.text = text;
-	}
-
-	public Boolean getStarred() {
-		return starred;
-	}
-
-	public void setStarred(Boolean starred) {
-		this.starred = starred;
+	public void setUrlLink(String urlLink) {
+		this.urlLink = urlLink;
 	}
 
 	public Date getCreatedAt() {
@@ -118,12 +94,12 @@ public class Note {
 		this.user = user;
 	}
 
-	public List<Image> getImages() {
-		return images;
+	public Note getNote() {
+		return note;
 	}
 
-	public void setImages(List<Image> images) {
-		this.images = images;
+	public void setNote(Note note) {
+		this.note = note;
 	}
 
 	@Override
@@ -142,7 +118,7 @@ public class Note {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Note other = (Note) obj;
+		Image other = (Image) obj;
 		if (id != other.id)
 			return false;
 		return true;
@@ -150,8 +126,8 @@ public class Note {
 
 	@Override
 	public String toString() {
-		return "Note [id=" + id + ", title=" + title + ", text=" + text + ", starred=" + starred + ", createdAt="
-				+ createdAt + ", updatedAt=" + updatedAt + ", user=" + user + "]";
+		return "Image [id=" + id + ", urlLink=" + urlLink + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt
+				+ "]";
 	}
 
 }

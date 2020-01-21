@@ -1,6 +1,7 @@
 package dev.vintonlee.notepad.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -13,11 +14,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class UserTest {
+class ImageTest {
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private User user;
+	private Image image;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -32,32 +33,28 @@ class UserTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		user = em.find(User.class, 1);
+		image = em.find(Image.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		user = null;
+		image = null;
 	}
 
 	@Test
 	@DisplayName("Test primary fields")
-	void test() {
-		assertEquals(1, user.getId());
-		assertEquals("admin", user.getRole());
+	void test1() {
+//		select * from image where id = 1;
+		assertEquals(1, image.getId());
+		assertTrue(image.getUrlLink().contains("https://i.imgur.com/HlVLzU9.jpg"));
 	}
-	
+
 	@Test
-	@DisplayName("Test relationship with notes")
+	@DisplayName("Test relationship with user")
 	void test2() {
-		assertEquals("apply to a lot of jobs", user.getNotes().get(0).getText());
-	}
-	
-	@Test
-	@DisplayName("Test relationship with images")
-	void test3() {
-		assertEquals("https://i.imgur.com/HlVLzU9.jpg", user.getImages().get(0).getUrlLink());
+//		select * from image where id = 1;
+		assertEquals(1, image.getUser().getId());
 	}
 
 }

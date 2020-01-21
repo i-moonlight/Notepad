@@ -50,10 +50,17 @@ class NoteTest {
 		assertTrue(note.getStarred());
 		assertNull(note.getCreatedAt());
 	}
+	
 	@Test
 	@DisplayName("Test relationship with user")
 	void test2() {
 		assertEquals("admin@notes.com", note.getUser().getEmail());
+	}
+	
+	@Test
+	@DisplayName("Test relationship with user")
+	void test3() {
+		assertEquals("https://i.imgur.com/HlVLzU9.jpg", note.getImages().get(0).getUrlLink());
 	}
 
 }

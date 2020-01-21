@@ -11,8 +11,9 @@
 
 
 		<!-- Class Definitions -->
-		<class>dev.vintonlee.notepad.entities.User</class>
+		<class>dev.vintonlee.notepad.entities.Image</class>
 		<class>dev.vintonlee.notepad.entities.Note</class>
+		<class>dev.vintonlee.notepad.entities.User</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.url"
