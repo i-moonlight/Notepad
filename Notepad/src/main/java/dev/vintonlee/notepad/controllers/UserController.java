@@ -27,9 +27,10 @@ public class UserController {
 	private UserService userSvc;
 
 	@GetMapping("users")
-	public List<User> findAll(HttpServletRequest req, HttpServletResponse resp, Principal principal) {
+	public List<User> findAll(HttpServletRequest req, HttpServletResponse resp) {
 
-		List<User> users = userSvc.findAll(principal.getName());
+//		List<User> users = userSvc.findAll(principal.getName());
+		List<User> users = userSvc.findAll();
 
 		if (users == null) {
 			resp.setStatus(404);

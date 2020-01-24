@@ -2,14 +2,28 @@ package dev.vintonlee.notepad.services;
 
 import java.util.List;
 
-import dev.vintonlee.notepad.entities.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import dev.vintonlee.notepad.entities.User;
+import dev.vintonlee.notepad.repositories.UserRepository;
+
+@Service
 public class UserServiceImpl implements UserService{
+	
+	@Autowired
+	private UserRepository userRepo;
 
 	@Override
 	public List<User> findAll(String name) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+//	remove after security it implemented 
+	@Override
+	public List<User> findAll() {
+		return userRepo.findAll();
 	}
 
 	@Override
@@ -29,5 +43,7 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 
 }

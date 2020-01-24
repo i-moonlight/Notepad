@@ -14,4 +14,6 @@ public interface UserService {
 
 	User updateUserProfile(String name, User user);
 
+	List<User> findAll();
+
 }

@@ -60,11 +60,11 @@ public class User {
 	@Column(name = "last_name")
 	private String lastName;
 
-	@JsonIgnoreProperties("user")
+	@JsonIgnoreProperties({ "user" })
 	@OneToMany(mappedBy = "user")
 	private List<Note> notes;
-	
-	@JsonIgnoreProperties("user")
+
+	@JsonIgnoreProperties({ "user", "note" })
 	@OneToMany(mappedBy = "user")
 	private List<Image> images;
 
