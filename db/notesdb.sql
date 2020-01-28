@@ -100,8 +100,8 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `notesdb`;
-INSERT INTO `user` (`id`, `username`, `email`, `password`, `created_at`, `updated_at`, `role`, `enabled`, `first_name`, `last_name`) VALUES (1, 'admin', 'admin@notes.com', 'notes', DEFAULT, DEFAULT, 'admin', true, NULL, NULL);
-INSERT INTO `user` (`id`, `username`, `email`, `password`, `created_at`, `updated_at`, `role`, `enabled`, `first_name`, `last_name`) VALUES (2, 'vinton', 'vinton@notes.com', 'notes', DEFAULT, DEFAULT, 'user', true, NULL, NULL);
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `created_at`, `updated_at`, `role`, `enabled`, `first_name`, `last_name`) VALUES (1, 'admin', 'admin@notes.com', '$2a$10$wLWPGAQMFBWKwSgGuaJsDO09KERzvlAMw4A2BTa.W8Jz7aI7.rj4i', DEFAULT, DEFAULT, 'admin', true, NULL, NULL);
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `created_at`, `updated_at`, `role`, `enabled`, `first_name`, `last_name`) VALUES (2, 'vinton', 'vinton@notes.com', '$2a$10$llS17x.w/M1mgxs7jd30HO/trXHXwNsQiC9aflQ1iWerepXpcC/He', DEFAULT, DEFAULT, 'user', true, NULL, NULL);
 
 COMMIT;
 

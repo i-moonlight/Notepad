@@ -27,7 +27,7 @@ public class UserController {
 	private UserService userSvc;
 
 	@GetMapping("users")
-	public List<User> findAll(HttpServletRequest req, HttpServletResponse resp) {
+	public List<User> findAll(HttpServletRequest req, HttpServletResponse resp, Principal principal) {
 
 //		List<User> users = userSvc.findAll(principal.getName());
 		List<User> users = userSvc.findAll();
