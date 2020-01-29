@@ -29,13 +29,13 @@ public class UserController {
 	@GetMapping("users")
 	public List<User> findAll(HttpServletRequest req, HttpServletResponse resp, Principal principal) {
 
-//		List<User> users = userSvc.findAll(principal.getName());
-		List<User> users = userSvc.findAll();
+		List<User> users = userSvc.findAll(principal.getName());
 
 		if (users == null) {
-			resp.setStatus(404);
+			resp.setStatus(403);
 		}
-		if (users.size() == 0) {
+
+		if (users != null && users.size() == 0) {
 			resp.setStatus(204);
 		}
 
@@ -43,8 +43,8 @@ public class UserController {
 	}
 
 	@PutMapping("users/admin")
-	public User replaceExistingUser(@RequestBody User user, HttpServletRequest req,
-			HttpServletResponse resp, Principal principal) {
+	public User replaceExistingUser(@RequestBody User user, HttpServletRequest req, HttpServletResponse resp,
+			Principal principal) {
 		try {
 			user = userSvc.updateUser(user, principal.getName());
 			if (user == null) {
@@ -83,14 +83,13 @@ public class UserController {
 
 		return user;
 	}
-	
+
 	@PutMapping("users")
 	public User replaceExistingUser(@RequestBody User user, HttpServletRequest req, Principal principal,
 			HttpServletResponse resp) {
-		
-		
+
 		try {
-			user = userSvc.updateUserProfile(principal.getName(), user)  ;
+			user = userSvc.updateUserProfile(principal.getName(), user);
 			if (user == null) {
 				resp.setStatus(404);
 				return null;
@@ -104,7 +103,7 @@ public class UserController {
 			resp.setStatus(400);
 			return null;
 		}
-		
+
 		return user;
 	}
 }

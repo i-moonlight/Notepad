@@ -9,21 +9,21 @@ import dev.vintonlee.notepad.entities.User;
 import dev.vintonlee.notepad.repositories.UserRepository;
 
 @Service
-public class UserServiceImpl implements UserService{
-	
+public class UserServiceImpl implements UserService {
+
 	@Autowired
 	private UserRepository userRepo;
 
 	@Override
 	public List<User> findAll(String name) {
-		// TODO Auto-generated method stub
+
+		User loggedInUser = userRepo.findUserByUsername(name);
+
+		if (loggedInUser != null && loggedInUser.getRole().equalsIgnoreCase("admin")) {
+			return userRepo.findAll();
+		}
+
 		return null;
-	}
-	
-//	remove after security it implemented 
-	@Override
-	public List<User> findAll() {
-		return userRepo.findAll();
 	}
 
 	@Override
@@ -43,7 +43,5 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	
 
 }
