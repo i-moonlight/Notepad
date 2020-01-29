@@ -30,6 +30,10 @@ public class AuthController {
 
 		user = authSrv.register(user);
 
+		if (user == null) {
+			res.setStatus(406); // User is not a unique user
+		}
+
 		return user;
 	}
 
