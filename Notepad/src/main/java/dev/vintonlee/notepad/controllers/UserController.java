@@ -42,27 +42,6 @@ public class UserController {
 		return users;
 	}
 
-	@PutMapping("users/admin")
-	public User replaceExistingUser(@RequestBody User user, HttpServletRequest req, HttpServletResponse resp,
-			Principal principal) {
-		try {
-			user = userSvc.updateUser(user, principal.getName());
-			if (user == null) {
-				resp.setStatus(404);
-				return null;
-			}
-			resp.setStatus(202);
-			StringBuffer url = req.getRequestURL();
-			url.append("/").append(user.getId());
-			resp.addHeader("Location", url.toString());
-		} catch (Exception e) {
-			e.printStackTrace();
-			resp.setStatus(400);
-			return null;
-		}
-		return user;
-	}
-
 	@GetMapping("users/{username}")
 	public User getExistingUserByUsername(@PathVariable String username, HttpServletRequest req, Principal principal,
 			HttpServletResponse resp) {
@@ -85,7 +64,7 @@ public class UserController {
 	}
 
 	@PutMapping("users")
-	public User replaceExistingUser(@RequestBody User user, HttpServletRequest req, Principal principal,
+	public User userUpdateExistingUser(@RequestBody User user, HttpServletRequest req, Principal principal,
 			HttpServletResponse resp) {
 
 		try {
