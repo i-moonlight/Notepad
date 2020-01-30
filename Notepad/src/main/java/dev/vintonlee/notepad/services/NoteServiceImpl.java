@@ -32,6 +32,18 @@ public class NoteServiceImpl implements NoteService {
 	}
 
 	@Override
+	public List<Note> findAllNotesByUser(String username) {
+
+		User loggedInUser = userRepo.findUserByUsername(username);
+		
+		if (loggedInUser != null) {
+			return noteRepo.findAllByUser(loggedInUser);
+		}
+
+		return null;
+	}
+
+	@Override
 	public Note findNoteByUsernameAndId(String username, int noteId) {
 		// TODO Auto-generated method stub
 		return null;

@@ -23,6 +23,21 @@ public class NoteController {
 	@Autowired
 	private NoteService noteSvc;
 
+	@GetMapping("notes")
+	public List<Note> findAllNotesByUser(HttpServletRequest req, HttpServletResponse resp, Principal principal) {
+
+		List<Note> notes = noteSvc.findAllNotesByUser(principal.getName());
+
+		if (notes == null) {
+			resp.setStatus(404);
+		}
+		if (notes != null && notes.size() == 0) {
+			resp.setStatus(204);
+		}
+
+		return notes;
+	}
+
 	@GetMapping("notes/admin")
 	public List<Note> findAll(HttpServletRequest req, HttpServletResponse resp, Principal principal) {
 

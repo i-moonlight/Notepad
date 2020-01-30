@@ -7,6 +7,8 @@ import dev.vintonlee.notepad.entities.Note;
 public interface NoteService {
 
 	List<Note> findAllNotes(String name);
+	
+	List<Note> findAllNotesByUser(String name);
 
 	Note findNoteByUsernameAndId(String username, int noteId);
 
