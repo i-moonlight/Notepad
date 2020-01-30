@@ -6,22 +6,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dev.vintonlee.notepad.entities.Note;
+import dev.vintonlee.notepad.entities.User;
 import dev.vintonlee.notepad.repositories.NoteRepository;
 import dev.vintonlee.notepad.repositories.UserRepository;
 
 @Service
 public class NoteServiceImpl implements NoteService {
-	
+
 	@Autowired
 	private UserRepository userRepo;
-	
+
 	@Autowired
 	private NoteRepository noteRepo;
 
 	@Override
-	public List<Note> findAllNotes(String name) {
-		
-		return noteRepo.findAll();
+	public List<Note> findAllNotes(String username) {
+
+		User loggedInUser = userRepo.findUserByUsername(username);
+
+		if (loggedInUser != null && loggedInUser.getRole().equalsIgnoreCase("admin")) {
+			return noteRepo.findAll();
+		}
+
+		return null;
 	}
 
 	@Override

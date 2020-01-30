@@ -1,5 +1,6 @@
 package dev.vintonlee.notepad.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,16 +23,15 @@ public class NoteController {
 	@Autowired
 	private NoteService noteSvc;
 
-	@GetMapping("notes")
-	public List<Note> findAll(HttpServletRequest req, HttpServletResponse resp) {
+	@GetMapping("notes/admin")
+	public List<Note> findAll(HttpServletRequest req, HttpServletResponse resp, Principal principal) {
 
-//		add princapal and user name 
-		List<Note> notes = noteSvc.findAllNotes("bob");
+		List<Note> notes = noteSvc.findAllNotes(principal.getName());
 
 		if (notes == null) {
-			resp.setStatus(404);
+			resp.setStatus(401);
 		}
-		if (notes.size() == 0) {
+		if (notes != null && notes.size() == 0) {
 			resp.setStatus(204);
 		}
 
