@@ -15,7 +15,7 @@ import dev.vintonlee.notepad.entities.User;
 import dev.vintonlee.notepad.services.AuthService;
 
 @RestController
-@CrossOrigin({ "*", "http://localhost:4207" })
+@CrossOrigin({ "*", "http://localhost:4209" })
 public class AuthController {
 
 	@Autowired

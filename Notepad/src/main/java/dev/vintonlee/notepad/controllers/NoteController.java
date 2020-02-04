@@ -22,7 +22,7 @@ import dev.vintonlee.notepad.services.NoteService;
 
 @RestController
 @RequestMapping("api")
-@CrossOrigin({ "*", "http://localhost:4207" })
+@CrossOrigin({ "*", "http://localhost:4209" })
 public class NoteController {
 
 	@Autowired

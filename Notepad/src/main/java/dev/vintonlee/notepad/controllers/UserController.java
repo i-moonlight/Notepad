@@ -20,7 +20,7 @@ import dev.vintonlee.notepad.services.UserService;
 
 @RestController
 @RequestMapping("api")
-@CrossOrigin({ "*", "http://localhost:4207" })
+@CrossOrigin({ "*", "http://localhost:4209" })
 public class UserController {
 
 	@Autowired
