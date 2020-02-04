@@ -7,7 +7,7 @@ import dev.vintonlee.notepad.entities.Note;
 public interface NoteService {
 
 	List<Note> findAllNotes(String name);
-	
+
 	List<Note> findAllNotesByUser(String name);
 
 	Note findNoteByUsernameAndId(String username, int noteId);
@@ -16,6 +16,6 @@ public interface NoteService {
 
 	Note updateNote(Note note, String name);
 
-	Note destroyNote(int noteId, String name);
+	boolean destroyNote(int noteId, String name);
 
 }
