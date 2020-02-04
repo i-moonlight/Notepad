@@ -14,9 +14,9 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent },
   { path: 'notes', component: NotesComponent },
+  { path: 'users', component: ProfileComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'users', component: ProfileComponent },
   { path: 'navbar', component: NavBarComponent },
   { path: 'admin', component: AdminComponent },
   { path: '**', component: NotFoundComponent }

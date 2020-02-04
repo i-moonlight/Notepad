@@ -21,6 +21,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AuthService } from './services/auth.service';
 import { DatePipe } from '@angular/common';
 import { UserService } from './services/user.service';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { UserService } from './services/user.service';
     ProfileComponent,
     NavBarComponent,
     AdminComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
