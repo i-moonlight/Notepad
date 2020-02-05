@@ -1,5 +1,13 @@
 <div>
   <H4>Notes</H4>
+
+  <div>
+    <button type="submit" class="login-button btn btn-dark" (click)="createNote()">
+      Add Note
+    </button>
+  </div>
+
+
   <ul *ngIf="notes.length > 0">
     <li *ngFor="let note of notes">
       {{note.title}}

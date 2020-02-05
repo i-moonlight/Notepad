@@ -1,3 +1,4 @@
+import { NotepadComponent } from './components/notepad/notepad.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent },
   { path: 'notes', component: NotesComponent },
+  { path: 'notepad', component: NotepadComponent },
   { path: 'users', component: ProfileComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },

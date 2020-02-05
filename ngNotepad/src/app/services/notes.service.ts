@@ -39,12 +39,10 @@ export class NotesService {
   // Read
 
   indexUserNotes(username: string) {
-    console.log('in get note by username note service');
-    console.log(username);
-
     if (localStorage.length === 0) {
       this.router.navigateByUrl('/login');
     }
+
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',

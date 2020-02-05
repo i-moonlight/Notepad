@@ -1,0 +1,58 @@
+<div class="container-fluid log-bg">
+  <br />
+  <br />
+  <div class="container login-form-1">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card rounded shadow shadow-sm">
+          <div class="card-body">
+            <h4 class="card-title text-center mb-0">
+              <strong>New Note</strong>
+            </h4>
+
+            <hr />
+            <form #newNoteForm="ngForm" ngNativeValidate id="newNote-form" class="text-center">
+              <div class="newNote-form-main-message"></div>
+              <div class="main-newNote-form">
+                <div class="newNote-group">
+                  <div class="form-group">
+                    <label class="text-left" for="title">Title
+                      <input type="text" class="form-control" id="title" name="title" placeholder="title" ngModel
+                        required /></label>
+                  </div>
+                  <div class="form-group">
+                    <label class="text-left" for="text">Text
+                      <input type="text" class="form-control" id="text" name="text" placeholder="text" ngModel
+                        required /></label>
+                  </div>
+                </div>
+                <hr />
+                <button type="submit" class="login-button btn btn-dark" (click)="createNewNote(newNoteForm)">
+                  Save
+                </button>
+              </div>
+              <br />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+</div>

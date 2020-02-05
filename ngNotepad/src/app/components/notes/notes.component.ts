@@ -33,7 +33,6 @@ export class NotesComponent implements OnInit {
     this.authSvc.getUserByUsername(this.authSvc.getLoggedInUsername()).subscribe(
       good => {
         this.user = good;
-        console.log(this.user.username);
         this.notesSvc.indexUserNotes(this.user.username).subscribe(
           goodNotes => {
             goodNotes.forEach(note => {
@@ -50,6 +49,10 @@ export class NotesComponent implements OnInit {
         this.router.navigateByUrl('/login');
       }
     );
+  }
+
+  createNote() {
+    this.router.navigateByUrl('/notepad');
   }
 
 }
