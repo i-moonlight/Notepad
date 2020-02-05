@@ -52,6 +52,7 @@ export class NotesService {
         'X-Requested-With': 'XMLHttpRequest'
       })
     };
+
     return this.http.get<Note[]>(this.url + username, httpOptions).pipe(
       catchError((err: any) => {
         console.log(err);
