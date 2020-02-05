@@ -27,6 +27,19 @@ export class AuthService {
         'X-Requested-With': 'XMLHttpRequest'
       })
     };
+
+    // create request to authenticate credentials
+    return this.http.get(this.baseUrl + 'authenticate', httpOptions).pipe(
+      tap(res => {
+        localStorage.setItem('credentials', credentials);
+        localStorage.setItem('username', username);
+        return res;
+      }),
+      catchError((err: any) => {
+        // console.log(err);
+        return throwError('AuthService.login(): Error logging in.');
+      })
+    );
   }
 
   generateBasicAuthCredentials(username, password) {
