@@ -13,7 +13,6 @@ export class AuthService {
 
   userLoggedIn = false;
 
-
   constructor(private http: HttpClient) { }
 
   login(username, password) {
@@ -56,6 +55,7 @@ export class AuthService {
   getLoggedInUsername() {
     return localStorage.getItem('username');
   }
+
   getUserByUsername(username: string) {
     const httpOptions = {
       headers: new HttpHeaders({

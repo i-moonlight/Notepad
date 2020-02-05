@@ -6,4 +6,23 @@ import { Injectable } from '@angular/core';
 export class NotesService {
 
   constructor() { }
+
+  // Create
+
+
+
+  // Read
+
+  indexUserNotes() {
+
+  }
+
+  // Update
+
+
+
+  // Delete
+
+
+
 }
