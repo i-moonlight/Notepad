@@ -1,1 +1,11 @@
-<p>notes works!</p>
+<div>
+  <H4>Notes</H4>
+  <ul *ngIf="notes.length > 0">
+    <li *ngFor="let note of notes">
+      {{note.title}}
+      <ul>
+        <li>{{note.text}}</li>
+      </ul>
+    </li>
+  </ul>
+</div>

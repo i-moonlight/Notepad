@@ -38,7 +38,7 @@ export class NotesService {
 
   // Read
 
-  indexUserNotes(username) {
+  indexUserNotes(username: string) {
     console.log('in get note by username note service');
     console.log(username);
 
