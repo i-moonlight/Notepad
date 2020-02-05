@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -9,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class NavBarComponent implements OnInit {
   isAdmin = true;
 
-  constructor(private authSvc: AuthService) { }
+  constructor(private authSvc: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -20,6 +21,7 @@ export class NavBarComponent implements OnInit {
 
   logout() {
     this.authSvc.logout();
+    this.router.navigateByUrl('/home');
   }
 
 }

@@ -66,6 +66,11 @@ public class NoteServiceImpl implements NoteService {
 
 	@Override
 	public Note createNote(Note note, String username) {
+
+		if (note.getTitle().length() <= 0 || note.getText().length() <= 0) {
+			return null;
+		}
+
 		User loggedInUser = userRepo.findUserByUsername(username);
 
 		if (loggedInUser != null) {

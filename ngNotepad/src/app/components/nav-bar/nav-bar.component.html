@@ -10,7 +10,7 @@
       <a class="nav-item nav-link showHand" [routerLink]="['/home']">Home <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link showHand" [routerLink]="['/users']" *ngIf="userLogInCheck()">Profile <span
           class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link showHand" onclick="window.location='#/notes'">Notes</a>
+      <a class="nav-item nav-link showHand" [routerLink]="['/notes']" *ngIf="userLogInCheck()">Notes</a>
       <a class="nav-item nav-link showHand" [routerLink]="['/login']" *ngIf="!userLogInCheck()">Login</a>
       <a class="nav-item nav-link showHand" [routerLink]="['/register']" *ngIf="!userLogInCheck()">Create Account</a>
       <a class="nav-item nav-link showHand" (click)="logout()" *ngIf="userLogInCheck()">Logout</a>
