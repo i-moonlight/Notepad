@@ -1,8 +1,10 @@
+import { Note } from './../../models/note';
 import { NotesService } from './../../services/notes.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { User } from 'src/app/models/user';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-notes',
@@ -12,6 +14,7 @@ import { User } from 'src/app/models/user';
 export class NotesComponent implements OnInit {
   user: User;
   notes = [];
+  selected = null;
 
   constructor(private authSvc: AuthService, private router: Router, private notesSvc: NotesService) { }
 
@@ -53,6 +56,10 @@ export class NotesComponent implements OnInit {
 
   createNote() {
     this.router.navigateByUrl('/notepad');
+  }
+
+  selectNote(note: Note) {
+    this.selected = note;
   }
 
 }

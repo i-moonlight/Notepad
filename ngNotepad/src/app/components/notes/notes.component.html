@@ -14,7 +14,7 @@
       <h5 class="card-header">Note: {{note.title}}</h5>
       <div class="card-body">
         <p class="card-text">{{note.text}}</p>
-        <a href="#" class="btn btn-primary btn-sm">Edit</a>
+        <button class="btn btn-primary btn-sm" (click)="selectNote(note)">Edit</button>
       </div>
     </div>
   </div>
