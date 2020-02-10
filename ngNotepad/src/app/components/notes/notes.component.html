@@ -2,18 +2,20 @@
   <H4>Notes</H4>
 
   <div>
-    <button type="submit" class="login-button btn btn-dark" (click)="createNote()">
+    <button type="submit" class="login-button btn btn-dark btn-sm" (click)="createNote()">
       Add Note
     </button>
+    <br>
+    <br>
   </div>
 
-
-  <ul *ngIf="notes.length > 0">
-    <li *ngFor="let note of notes">
-      {{note.title}}
-      <ul>
-        <li>{{note.text}}</li>
-      </ul>
-    </li>
-  </ul>
+  <div *ngIf="notes.length > 0">
+    <div class="card" *ngFor="let note of notes">
+      <h5 class="card-header">Note: {{note.title}}</h5>
+      <div class="card-body">
+        <p class="card-text">{{note.text}}</p>
+        <a href="#" class="btn btn-primary btn-sm">Edit</a>
+      </div>
+    </div>
+  </div>
 </div>

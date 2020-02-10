@@ -9,6 +9,6 @@ import dev.vintonlee.notepad.entities.User;
 
 public interface NoteRepository extends JpaRepository<Note, Integer> {
 
-	List<Note> findAllByUser(User loggedInUser);
+	List<Note> findAllByUserOrderByUpdatedAt(User loggedInUser);
 
 }

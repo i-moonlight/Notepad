@@ -38,7 +38,7 @@ public class NoteServiceImpl implements NoteService {
 		User loggedInUser = userRepo.findUserByUsername(username);
 
 		if (loggedInUser != null) {
-			return noteRepo.findAllByUser(loggedInUser);
+			return noteRepo.findAllByUserOrderByUpdatedAt(loggedInUser);
 		}
 
 		return null;
