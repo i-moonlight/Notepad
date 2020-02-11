@@ -10,6 +10,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NotesComponent } from './components/notes/notes.component';
+import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -26,7 +27,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [],
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [RouterModule.forRoot(routes, { useHash: true }), NgbCollapseModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

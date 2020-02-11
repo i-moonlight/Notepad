@@ -1,11 +1,13 @@
 <div>
-  <H4>Notes</H4>
-
-  <div>
-    <button type="submit" class="login-button btn btn-primary btn-sm" (click)="createNote()">
-      Add Note</button>
+  <div class="mx-auto text-center">
     <br>
-    <br>
+    <H4>Your Notes</H4>
+    <div>
+      <button type="submit" class="login-button btn btn-primary btn-sm" (click)="createNote()">
+        Add Note</button>
+      <br>
+      <br>
+    </div>
   </div>
 
   <div *ngIf="notes.length > 0">
