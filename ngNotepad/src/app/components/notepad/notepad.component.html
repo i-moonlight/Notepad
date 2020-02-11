@@ -27,13 +27,11 @@
                   </div>
                 </div>
                 <hr />
-                <button type="submit" class="login-button btn btn-dark" (click)="createNewNote(newNoteForm)">
-                  Save
-                </button>
-                <br><br>
-                <button type="submit" class="login-button btn btn-warning" [routerLink]="['/notes']">
-                  Cancel
-                </button>
+                <div class="btn-group">
+                  <button type="submit" class="login-button btn btn-primary"
+                    (click)="createNewNote(newNoteForm)">Save</button>
+                  <button type="submit" class="login-button btn btn-warning" [routerLink]="['/notes']">Cancel</button>
+                </div>
               </div>
               <br />
             </form>
@@ -69,13 +67,14 @@
                   </div>
                 </div>
                 <hr />
-                <button type="submit" class="login-button btn btn-dark" (click)="updateNote(updateNoteForm)">
-                  Update Note
-                </button>
-                <br><br>
-                <button type="submit" class="login-button btn btn-warning" [routerLink]="['/notes']">
-                  Cancel
-                </button>
+                <div class="btn-group">
+                  <button type="submit" class="login-button btn btn-primary" (click)="updateNote(updateNoteForm)">
+                    Update Note
+                  </button>
+                  <button type="submit" class="login-button btn btn-warning" [routerLink]="['/notes']">
+                    Cancel
+                  </button>
+                </div>
               </div>
               <br />
             </form>

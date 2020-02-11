@@ -2,9 +2,8 @@
   <H4>Notes</H4>
 
   <div>
-    <button type="submit" class="login-button btn btn-dark btn-sm" (click)="createNote()">
-      Add Note
-    </button>
+    <button type="submit" class="login-button btn btn-primary btn-sm" (click)="createNote()">
+      Add Note</button>
     <br>
     <br>
   </div>
@@ -14,9 +13,10 @@
       <h5 class="card-header">Note: {{note.title}}</h5>
       <div class="card-body">
         <p class="card-text">{{note.text}}</p>
-        <button class="btn btn-primary btn-sm" (click)="selectNote(note)">Edit</button>
-        <br><br>
-        <button class="btn btn-warning btn-sm" (click)="deleteNote(note)">Delete</button>
+        <div class="btn-group">
+          <button class="btn btn-primary btn-sm" (click)="selectNote(note)">Edit</button>
+          <button class="btn btn-warning btn-sm" (click)="deleteNote(note)">Delete</button>
+        </div>
       </div>
     </div>
   </div>
