@@ -49,9 +49,10 @@ export class NotepadComponent implements OnInit {
   }
 
   updateNote(updateNoteForm: NgForm) {
-    this.newNote = updateNoteForm.value;
+    this.editedNote = updateNoteForm.value;
+    this.editedNote.id = this.noteSvc.selectedNote.id;
 
-    this.noteSvc.update(this.newNote).subscribe(
+    this.noteSvc.update(this.editedNote).subscribe(
       success => {
         this.noteSvc.selectedNote = null;
         this.router.navigateByUrl('/notes');

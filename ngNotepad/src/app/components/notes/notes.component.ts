@@ -61,7 +61,7 @@ export class NotesComponent implements OnInit {
 
   selectNote(note: Note) {
     this.selected = note;
-    this.notesSvc.selectedNote = this.selected;
+    this.notesSvc.selectedNote = Object.assign({}, this.selected);
     this.router.navigateByUrl('/notepad');
   }
 
