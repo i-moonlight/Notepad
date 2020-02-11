@@ -14,6 +14,8 @@ import { Note } from 'src/app/models/note';
 export class NotepadComponent implements OnInit {
   user: User;
   newNote: Note;
+  editedNote: Note;
+  selectedNote: Note;
 
   constructor(private authSvc: AuthService, private router: Router, private noteSvc: NotesService) { }
 
@@ -27,6 +29,10 @@ export class NotepadComponent implements OnInit {
       }
     );
 
+    if (this.noteSvc.selectedNote != null) {
+      this.selectedNote = this.noteSvc.selectedNote;
+
+    }
   }
 
   createNewNote(newNoteForm: NgForm) {
@@ -40,6 +46,21 @@ export class NotepadComponent implements OnInit {
 
       }
     );
+  }
+
+  updateNote(updateNoteForm: NgForm) {
+    this.newNote = updateNoteForm.value;
+
+    this.noteSvc.update(this.newNote).subscribe(
+      success => {
+        this.noteSvc.selectedNote = null;
+        this.router.navigateByUrl('/notes');
+      },
+      failure => {
+
+      }
+    );
+
   }
 
 

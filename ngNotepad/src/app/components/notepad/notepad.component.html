@@ -1,7 +1,7 @@
 <div class="container-fluid log-bg">
   <br />
   <br />
-  <div class="container login-form-1">
+  <div class="container login-form-1" *ngIf="!selectedNote">
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card rounded shadow shadow-sm">
@@ -29,6 +29,52 @@
                 <hr />
                 <button type="submit" class="login-button btn btn-dark" (click)="createNewNote(newNoteForm)">
                   Save
+                </button>
+                <br><br>
+                <button type="submit" class="login-button btn btn-warning" [routerLink]="['/notes']">
+                  Cancel
+                </button>
+              </div>
+              <br />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container login-form-1" *ngIf="selectedNote">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card rounded shadow shadow-sm">
+          <div class="card-body">
+            <h4 class="card-title text-center mb-0">
+              <strong>Edit Note</strong>
+            </h4>
+
+            <hr />
+            <form #updateNoteForm="ngForm" ngNativeValidate id="newNote-form" class="text-center">
+              <div class="newNote-form-main-message"></div>
+              <div class="main-newNote-form">
+                <div class="newNote-group">
+                  <div class="form-group">
+                    <label class="text-left" for="title">Title
+                      <input type="text" class="form-control" id="title" name="title" value="selectedNote.title" ngModel
+                        required /></label>
+                  </div>
+                  <div class="form-group">
+                    <label class="text-left" for="text">Text
+                      <textarea rows="4" cols="35" type="text" class="form-control" id="text" name="text"
+                        value="selectedNote.text" ngModel required></textarea></label>
+                  </div>
+                </div>
+                <hr />
+                <button type="submit" class="login-button btn btn-dark" (click)="updateNote(updateNoteForm)">
+                  Update Note
+                </button>
+                <br><br>
+                <button type="submit" class="login-button btn btn-warning" [routerLink]="['/notes']">
+                  Cancel
                 </button>
               </div>
               <br />

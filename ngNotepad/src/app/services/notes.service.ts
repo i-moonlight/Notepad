@@ -14,6 +14,8 @@ export class NotesService {
   private baseUrl = environment.baseUrl;
   private url = this.baseUrl + 'api/notes/';
 
+  public selectedNote: Note;
+
   constructor(private authService: AuthService, private router: Router, private http: HttpClient) { }
 
   // Create

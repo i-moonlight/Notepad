@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit, NgModule } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { NgModel } from '@angular/forms';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-notes',
@@ -60,6 +61,8 @@ export class NotesComponent implements OnInit {
 
   selectNote(note: Note) {
     this.selected = note;
+    this.notesSvc.selectedNote = this.selected;
+    this.router.navigateByUrl('/notepad');
   }
 
 }
