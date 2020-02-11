@@ -65,4 +65,17 @@ export class NotesComponent implements OnInit {
     this.router.navigateByUrl('/notepad');
   }
 
+  deleteNote(note: Note) {
+    this.selected = note;
+    this.notesSvc.destroyNote(this.selected.id).subscribe(
+      success => {
+        this.loadNotes();
+        this.selected = null;
+      },
+      failure => {
+
+      }
+    );
+  }
+
 }

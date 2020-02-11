@@ -21,15 +21,9 @@ export class NotesService {
   // Create
 
   createNote(newNote: Note) {
-    console.log('in create  - Note Service' + newNote.title);
 
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: `Basic ` + this.authService.getCredentials(),
-        'X-Requested-With': 'XMLHttpRequest'
-      })
-    };
+    const httpOptions = this.setHttpOptions();
+
     return this.http.post<Note>(this.url, newNote, httpOptions).pipe(
       catchError((err: any) => {
         console.log(err);
@@ -41,17 +35,9 @@ export class NotesService {
   // Read
 
   indexUserNotes(username: string) {
-    if (localStorage.length === 0) {
-      this.router.navigateByUrl('/login');
-    }
+    this.checkUserInLocalStorage();
 
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: `Basic ` + this.authService.getCredentials(),
-        'X-Requested-With': 'XMLHttpRequest'
-      })
-    };
+    const httpOptions = this.setHttpOptions();
 
     return this.http.get<Note[]>(this.url, httpOptions).pipe(
       catchError((err: any) => {
@@ -64,15 +50,10 @@ export class NotesService {
   // Update
 
   update(updatedNote: Note) {
-    console.log('in update service ' + updatedNote.title + ' ' + updatedNote.id);
+    this.checkUserInLocalStorage();
 
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: `Basic ` + this.authService.getCredentials(),
-        'X-Requested-With': 'XMLHttpRequest'
-      })
-    };
+    const httpOptions = this.setHttpOptions();
+
     return this.http.put<Note>(this.url, updatedNote, httpOptions).pipe(
       catchError((err: any) => {
         console.log(err);
@@ -84,20 +65,10 @@ export class NotesService {
   // Delete
 
   destroyNote(id: number) {
-    console.log('id for delete');
-    console.log(id);
+    this.checkUserInLocalStorage();
 
-    if (!this.authService.checkLogin()) {
-      return null;
-    }
+    const httpOptions = this.setHttpOptions();
 
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: `Basic ` + this.authService.getCredentials(),
-        'X-Requested-With': 'XMLHttpRequest'
-      })
-    };
     return this.http.delete<Note>(this.url + id, httpOptions).pipe(
       catchError((err: any) => {
         console.log(err);
@@ -106,4 +77,19 @@ export class NotesService {
     );
   }
 
+  private checkUserInLocalStorage() {
+    if (localStorage.length === 0) {
+      this.router.navigateByUrl('/login');
+    }
+  }
+
+  private setHttpOptions() {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Basic ` + this.authService.getCredentials(),
+        'X-Requested-With': 'XMLHttpRequest'
+      })
+    };
+  }
 }
