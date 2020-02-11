@@ -51,7 +51,7 @@ export class NotesService {
       })
     };
 
-    return this.http.get<Note[]>(this.url + username, httpOptions).pipe(
+    return this.http.get<Note[]>(this.url, httpOptions).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError('Error not service - indexUserNotes()');
