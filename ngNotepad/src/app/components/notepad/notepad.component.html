@@ -59,13 +59,13 @@
                 <div class="newNote-group">
                   <div class="form-group">
                     <label class="text-left" for="title">Title
-                      <input type="text" class="form-control" id="title" name="title" value="selectedNote.title" ngModel
+                      <input type="text" class="form-control" id="title" name="title" [(ngModel)]="selectedNote.title "
                         required /></label>
                   </div>
                   <div class="form-group">
                     <label class="text-left" for="text">Text
                       <textarea rows="4" cols="35" type="text" class="form-control" id="text" name="text"
-                        value="selectedNote.text" ngModel required></textarea></label>
+                        [(ngModel)]="selectedNote.text" required></textarea></label>
                   </div>
                 </div>
                 <hr />
