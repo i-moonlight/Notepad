@@ -14,11 +14,7 @@ export class UserService {
   private baseUrl = environment.baseUrl;
   private url = environment.baseUrl + 'api/users';
 
-  constructor(
-    private http: HttpClient,
-    private router: Router,
-    private authService: AuthService
-  ) { }
+  constructor(private http: HttpClient, private router: Router, private authService: AuthService) { }
 
   // LIST of USERS for ADMIN **********
 
@@ -28,13 +24,12 @@ export class UserService {
     }
     const httpOptions = {
       headers: new HttpHeaders({
-        Authorization: `Basic ` + this.authService.getCredentials(), // Space after `Basic ` + is key due to concatenation.
+        Authorization: `Basic ` + this.authService.getCredentials(),
         'X-Requested-With': 'XMLHttpRequest'
       })
     };
     return this.http.get<User[]>(this.url, httpOptions).pipe(
       catchError((err: any) => {
-        // console.log(err);
         return throwError('user.service.ts Error: Index Method');
       })
     );
@@ -43,9 +38,8 @@ export class UserService {
   // USER BY ID **********
 
   public findById(id: number) {
-    if (localStorage.length === 0) {
-      this.router.navigateByUrl('/login');
-    }
+    this.checkUserInLocalStorage();
+
     const httpOptions = {
       headers: new HttpHeaders({
         Authorization: `Basic ` + this.authService.getCredentials(),
@@ -55,7 +49,6 @@ export class UserService {
 
     return this.http.get<User>(this.url + '/' + id, httpOptions).pipe(
       catchError((err: any) => {
-        // console.log(err);
         return throwError('user.service.ts Error: FindById Method');
       })
     );
@@ -64,21 +57,14 @@ export class UserService {
   // CREATE USER **********
 
   public create(user: User) {
-    if (localStorage.length === 0) {
-      this.router.navigateByUrl('/login');
-    }
-    const httpOptions = {
-      headers: new HttpHeaders({
-        Authorization: `Basic ` + this.authService.getCredentials(),
-        'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest'
-      })
-    };
+    this.checkUserInLocalStorage();
+
+    const httpOptions = this.setHttpOptions();
+
     return this.http
       .post(environment.baseUrl + '/register', user, httpOptions)
       .pipe(
         catchError((err: any) => {
-          // console.log(err);
           return throwError('user.service.ts Error: Create Method');
         })
       );
@@ -87,43 +73,43 @@ export class UserService {
   // UPDATE USER **********
 
   public updateUserAsAdmin(user: User) {
-    if (localStorage.length === 0) {
-      this.router.navigateByUrl('/login');
-    }
-    const httpOptions = {
-      headers: new HttpHeaders({
-        Authorization: `Basic ` + this.authService.getCredentials(),
-        'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest'
-      })
-    };
+    this.checkUserInLocalStorage();
+
+    const httpOptions = this.setHttpOptions();
+
     return this.http.put(this.url + '/admin', user, httpOptions).pipe(
       catchError((err: any) => {
-        // console.log(err);
-        // console.log('update method User Service');
         return throwError('user.service.ts Error: Update Method');
       })
     );
   }
 
   public updateUserAsUser(user) {
-    if (localStorage.length === 0) {
-      this.router.navigateByUrl('/login');
-    }
-    const httpOptions = {
-      headers: new HttpHeaders({
-        Authorization: `Basic ` + this.authService.getCredentials(),
-        'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest'
-      })
-    };
+    this.checkUserInLocalStorage();
+
+    const httpOptions = this.setHttpOptions();
+
     return this.http.put(this.url, user, httpOptions).pipe(
       catchError((err: any) => {
-        // console.log(err);
-        // console.log('update method User Service');
         return throwError('user.service.ts Error: Update Method');
       })
     );
+  }
+
+  private checkUserInLocalStorage() {
+    if (localStorage.length === 0) {
+      this.router.navigateByUrl('/login');
+    }
+  }
+
+  private setHttpOptions() {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Basic ` + this.authService.getCredentials(),
+        'X-Requested-With': 'XMLHttpRequest'
+      })
+    };
   }
 
 }
