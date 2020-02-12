@@ -1,7 +1,12 @@
 <div>
   <div class="mx-auto text-center">
     <br>
-    <H4>Your Notes</H4>
+    <div *ngIf="user.firstName != null">
+      <H4>{{user.firstName | titlecase }} Notes</H4>
+    </div>
+    <div *ngIf="user.firstName == null">
+      <H4>Your Notes</H4>
+    </div>
     <div>
       <button type="submit" class="login-button btn btn-primary btn-sm" (click)="createNote()">
         Add Note</button>
