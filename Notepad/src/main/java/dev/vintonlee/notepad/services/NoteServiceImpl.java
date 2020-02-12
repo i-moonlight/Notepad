@@ -121,6 +121,11 @@ public class NoteServiceImpl implements NoteService {
 		Note managedNote = new Note();
 		if (loggedInUser != null) {
 			managedNote = noteRepo.getOne(noteId);
+
+			if (managedNote.getId() < 3) {
+				return false;
+			}
+
 			if (managedNote != null) {
 				if (loggedInUser.getId() == managedNote.getUser().getId()
 						|| loggedInUser.getRole().equalsIgnoreCase("admin")) {
