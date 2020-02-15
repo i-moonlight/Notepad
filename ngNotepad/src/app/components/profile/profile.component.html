@@ -1,4 +1,4 @@
-<div class="container d-flex h-100 ">
+<div class="container-fluid">
   <div class="mx-auto text-center">
     <br>
     <h1 class="mx-auto my-0 ">{{user.firstName}} {{user.lastName}}</h1>
@@ -6,6 +6,11 @@
     <h2 class="mx-auto my-0 ">Email: {{user.email}}</h2>
     <h2 class="mx-auto my-0 ">Date last updated: {{user.updatedAt | date}}</h2>
     <h2 class="mx-auto my-0 ">Date joined: {{user.updatedAt | date}}</h2>
+    <button class="btn btn-primary btn-sm" (click)="editUserInfo()">Edit User Profile</button>
+    <div *ngIf="user.role === 'admin'">
+      <br>
+      <button class="btn btn-warning btn-sm" [routerLink]="['/admin']">ADMIN Portal</button>
+    </div>
   </div>
   <br>
   <br>
@@ -28,5 +33,4 @@
   <br>
   <br>
   <br>
-
 </div>

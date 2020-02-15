@@ -14,7 +14,6 @@
       <a class="nav-item nav-link showHand" [routerLink]="['/login']" *ngIf="!userLogInCheck()">Login</a>
       <a class="nav-item nav-link showHand" [routerLink]="['/register']" *ngIf="!userLogInCheck()">Create Account</a>
       <a class="nav-item nav-link showHand" (click)="logout()" *ngIf="userLogInCheck()">Logout</a>
-      <a class="nav-item nav-link showHand" [routerLink]="['/admin']" *ngIf="isAdmin">ADMIN PORTAL</a>
     </div>
   </div>
 </nav>

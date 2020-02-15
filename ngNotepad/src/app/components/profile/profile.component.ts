@@ -32,4 +32,7 @@ export class ProfileComponent implements OnInit {
     );
   }
 
+  editUserInfo() {
+
+  }
 }
