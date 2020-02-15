@@ -21,7 +21,7 @@ export class AdminComponent implements OnInit {
           this.user = good;
           console.log(this.user);
           if (this.user.role !== 'admin') {
-            this.router.navigateByUrl('/login');
+            this.router.navigateByUrl('/notes');
           }
         },
         error => {
