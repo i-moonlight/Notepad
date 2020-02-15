@@ -35,3 +35,7 @@ body {
   background-attachment: scroll;
   background-size: cover;
 }
+
+.notePad {
+  color: rgb(30, 255, 0);
+}

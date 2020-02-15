@@ -1,5 +1,6 @@
 <nav id="nav" class="navbar navbar-expand-sm navbar-dark bg-secondary">
-  <a class="notPad" style="color: rgb(30, 255, 0)"><span>NotePad</span></a>
+  <a class="nav-item nav-link showHand notePad" [routerLink]="['/home']" (click)="isCollapsed = true">NotePad<span
+      class="sr-only">(current)</span></a>
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
     data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
     aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed">
@@ -7,8 +8,6 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup" [ngbCollapse]="isCollapsed">
     <div class="navbar-nav">
-      <a class="nav-item nav-link showHand" [routerLink]="['/home']" (click)="isCollapsed = true">Home <span
-          class="sr-only">(current)</span></a>
       <a class="nav-item nav-link showHand" [routerLink]="['/users']" (click)="isCollapsed = true"
         *ngIf="userLogInCheck()">Profile <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link showHand" [routerLink]="['/notes']" (click)="isCollapsed = true"
