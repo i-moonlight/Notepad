@@ -12,6 +12,8 @@ import { User } from 'src/app/models/user';
 })
 export class RegisterComponent implements OnInit {
   newUser: User;
+  registerFailed = false;
+  login = false;
 
   constructor(private authSvc: AuthService, private router: Router) { }
 
@@ -27,10 +29,14 @@ export class RegisterComponent implements OnInit {
           login => {
             this.router.navigateByUrl('/notes');
           },
-          failed => { this.router.navigateByUrl('/login'); }
+          failed => {
+            this.login = true;
+            this.router.navigateByUrl('/login');
+          }
         );
       },
       failure => {
+        this.registerFailed = true;
         this.router.navigateByUrl('/register');
       }
     );

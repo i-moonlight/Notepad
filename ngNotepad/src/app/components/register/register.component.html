@@ -7,9 +7,13 @@
         <div class="card rounded shadow shadow-sm">
           <div class="card-body">
             <h4 class="card-title text-center mb-0">
-              <strong>Create an Account</strong>
+              <strong>Create Account</strong>
             </h4>
             <hr />
+            <div *ngIf="registerFailed === true">
+              <h6 class="errorText text-center mb-0">Sorry, please try to register again. Username is already
+                in use.</h6>
+            </div>
             <form #registerForm="ngForm" ngNativeValidate id="login-form" class="text-center">
               <div class="login-form-main-message"></div>
               <div class="main-login-form">

@@ -13,3 +13,7 @@ body {
   letter-spacing: 0.15rem;
   border: 0;
 }
+
+.errorText {
+  color: rgb(236, 18, 18);
+}
