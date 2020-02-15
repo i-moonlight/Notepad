@@ -1,3 +1,18 @@
-<div class="masthead">
-
-</div>
+<header class="masthead">
+  <div class="container d-flex h-100 align-items-center">
+    <div class="mx-auto text-center">
+      <h1 class="mx-auto my-0 text-uppercase">Notepad</h1>
+      <h2 class="mx-auto my-0 text-uppercase">
+        Keep your notes handy
+      </h2>
+      <br />
+      <div *ngIf="!userLogInCheck()">
+        <a [routerLink]="['/login']" class="btn btn-dark js-scroll-trigger">Login</a>
+        <br /><br />
+        <a [routerLink]="['/register']" class="btn btn-dark js-scroll-trigger">Join</a>
+        <br /><br />
+      </div>
+      <a [routerLink]="['/notes']" class="btn btn-dark js-scroll-trigger" *ngIf="userLogInCheck()">See Notes</a>
+    </div>
+  </div>
+</header>
