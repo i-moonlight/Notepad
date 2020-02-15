@@ -17,3 +17,16 @@ body {
 .errorText {
   color: rgb(236, 18, 18);
 }
+
+.masthead {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 35rem;
+  padding: 15rem 0;
+  background: url(images/aspens.jpeg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
