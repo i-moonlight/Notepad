@@ -36,12 +36,12 @@ public class AuthServiceImpl implements AuthService {
 
 		User uniqueUsername = userRepo.findUserByUsername(user.getUsername());
 
-		if (uniqueUsername != null && uniqueUsername.getUsername().equalsIgnoreCase(user.getUsername())) {
+		if (uniqueUsername == null) {
 			return false;
 		}
 		User uniqueEmail = userRepo.findUserByEmail(user.getEmail());
 
-		if (uniqueEmail != null && uniqueEmail.getEmail().equalsIgnoreCase(user.getEmail())) {
+		if (uniqueEmail == null) {
 			return false;
 		}
 
