@@ -1,1 +1,71 @@
-<p>register works!</p>
+<div class="container-fluid log-bg">
+  <br />
+  <br />
+  <div class="container login-form-1">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card rounded shadow shadow-sm">
+          <div class="card-body">
+            <h4 class="card-title text-center mb-0">
+              <strong>Create an Account</strong>
+            </h4>
+            <hr />
+            <form #registerForm="ngForm" ngNativeValidate id="login-form" class="text-center">
+              <div class="login-form-main-message"></div>
+              <div class="main-login-form">
+                <div class="login-group">
+                  <div class="form-group">
+                    <label class="text-left" for="firstName">First Name
+                      <input type="text" class="form-control" id="firstName" name="firstName" placeholder="first name"
+                        ngModel required /></label>
+                  </div>
+                  <div class="form-group">
+                    <label class="text-left" for="lastName">Last Name
+                      <input type="text" class="form-control" id="lastName" name="lastName" placeholder="last name"
+                        ngModel required /></label>
+                  </div>
+                  <div class="form-group">
+                    <label class="text-left" for="username">Username
+                      <input type="text" class="form-control" id="username" name="username" placeholder="username"
+                        ngModel required /></label>
+                  </div>
+                  <div class="form-group">
+                    <label class="text-left" for="password">Password
+                      <input type="password" class="form-control" id="password" name="password" placeholder="password"
+                        ngModel required /></label>
+                  </div>
+                  <div class="form-group">
+                    <label class="text-left" for="email">Email
+                      <input type="email" class="form-control" id="email" name="email" placeholder="email" ngModel
+                        required /></label>
+                  </div>
+                </div>
+                <hr />
+                <button type="submit" class="login-button btn btn-dark" (click)="register(registerForm)">
+                  Register
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+</div>
