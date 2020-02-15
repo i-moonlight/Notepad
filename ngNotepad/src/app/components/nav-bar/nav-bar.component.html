@@ -7,13 +7,17 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup" [ngbCollapse]="isCollapsed">
     <div class="navbar-nav">
-      <a class="nav-item nav-link showHand" [routerLink]="['/home']">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link showHand" [routerLink]="['/users']" *ngIf="userLogInCheck()">Profile <span
+      <a class="nav-item nav-link showHand" [routerLink]="['/home']" (click)="isCollapsed = true">Home <span
           class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link showHand" [routerLink]="['/notes']" *ngIf="userLogInCheck()">Notes</a>
-      <a class="nav-item nav-link showHand" [routerLink]="['/login']" *ngIf="!userLogInCheck()">Login</a>
-      <a class="nav-item nav-link showHand" [routerLink]="['/register']" *ngIf="!userLogInCheck()">Create Account</a>
-      <a class="nav-item nav-link showHand" (click)="logout()" *ngIf="userLogInCheck()">Logout</a>
+      <a class="nav-item nav-link showHand" [routerLink]="['/users']" (click)="isCollapsed = true"
+        *ngIf="userLogInCheck()">Profile <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link showHand" [routerLink]="['/notes']" (click)="isCollapsed = true"
+        *ngIf="userLogInCheck()">Notes</a>
+      <a class="nav-item nav-link showHand" [routerLink]="['/login']" (click)="isCollapsed = true"
+        *ngIf="!userLogInCheck()">Login</a>
+      <a class="nav-item nav-link showHand" [routerLink]="['/register']" (click)="isCollapsed = true"
+        *ngIf="!userLogInCheck()">Create Account</a>
+      <a class="nav-item nav-link showHand" (click)="logout(); isCollapsed = true" *ngIf="userLogInCheck()">Logout</a>
     </div>
   </div>
 </nav>
