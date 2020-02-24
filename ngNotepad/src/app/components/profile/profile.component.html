@@ -1,17 +1,29 @@
 <div class="container-fluid">
-  <div class="mx-auto text-center" *ngIf="!editUserForm">
-    <br>
-    <h1 class="mx-auto my-0 ">{{user.firstName}} {{user.lastName}}</h1>
-    <h2 class="mx-auto my-0 ">Username: {{user.username}}</h2>
-    <h2 class="mx-auto my-0 ">Email: {{user.email}}</h2>
-    <h2 class="mx-auto my-0 ">Date last updated: {{user.updatedAt | date}}</h2>
-    <h2 class="mx-auto my-0 ">Date joined: {{user.updatedAt | date}}</h2>
-    <button class="btn btn-primary btn-sm" [routerLink]="['/profileUpdate']">Edit User Profile</button>
-    <div *ngIf="user.role === 'admin'">
-      <br>
-      <button class="btn btn-warning btn-sm" [routerLink]="['/admin']">ADMIN Portal</button>
-    </div>
-  </div>
+    <br />
+    <br />
+      <div class="container update-form-1">
+        <div class="row">
+          <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card rounded shadow shadow-sm">
+              <div class="card-body">
+                <h4 class="card-title text-center mb-0">
+                  <strong>{{user.firstName}} {{user.lastName}}'s Profile</strong>
+                </h4>
+                <hr />
+                <h4 class="card-body text-left mb-0 ">Username: {{user.username}}</h4>
+                <h4 class="card-body text-left mb-0 ">Email: {{user.email}}</h4>
+                <h4 class="card-body text-left mb-0  ">Last updated: {{user.updatedAt | date}}</h4>
+                <hr />
+                <div class="btn-group">
+                  <button class="btn btn-primary btn-sm" [routerLink]="['/profileUpdate']">Edit User Profile</button>
+                  <div *ngIf="user.role === 'admin'">
+                    <button class="btn btn-warning btn-sm" [routerLink]="['/admin']">ADMIN Portal</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
   <br>
   <br>
   <br>
