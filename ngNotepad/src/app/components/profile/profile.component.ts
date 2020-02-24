@@ -11,8 +11,6 @@ import { User } from 'src/app/models/user';
 })
 export class ProfileComponent implements OnInit {
   user: User = new User();
-  editUserForm = false;
-  updateFailed = false;
 
   constructor(private authSvc: AuthService, private router: Router) { }
 
@@ -27,11 +25,9 @@ export class ProfileComponent implements OnInit {
     this.authSvc.getUserByUsername(this.authSvc.getLoggedInUsername()).subscribe(
       success => {
         this.user = success;
-
       },
       failure => { }
     );
   }
-
 
 }
