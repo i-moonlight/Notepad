@@ -28,7 +28,6 @@ export class ProfileUpdateComponent implements OnInit {
     this.authSvc.getUserByUsername(this.authSvc.getLoggedInUsername()).subscribe(
       success => {
         this.user = Object.assign(this.user, success);
-
       },
       failure => { }
     );
@@ -36,6 +35,7 @@ export class ProfileUpdateComponent implements OnInit {
 
 
   editUserInfo(updateForm: NgForm) {
+    this.ngOnInit();
     this.updateUser.id = this.user.id;
     this.updateUser.username = this.user.username;
     this.updateUser.firstName = updateForm.value.firstName;

@@ -10,8 +10,7 @@
               </h4>
               <hr />
               <div *ngIf="updateFailed === true">
-                <h6 class="errorText text-center mb-0">Sorry, please try to register again. Username or email is already
-                  in use.</h6>
+                <h6 class="errorText text-center mb-0">Sorry, please try to again.</h6>
               </div>
               <form #updateForm="ngForm" ngNativeValidate id="update-form" class="text-center">
                 <div class="update-form-main-message"></div>
@@ -34,12 +33,14 @@
                     </div>
                   </div>
                   <hr />
-                  <button type="submit" class="login-button btn btn-dark" (click)="editUserInfo(updateForm)">
-                    update
-                  </button>
-                  <button type="submit" class="login-button btn btn-warning" [routerLink]="['/users']">
-                    Cancel
-                  </button>
+                  <div class="btn-group">
+                    <button type="submit" class="login-button btn btn-primary" (click)="editUserInfo(updateForm)">
+                      update
+                    </button>
+                    <button type="submit" class="login-button btn btn-warning" [routerLink]="['/users']">
+                      Cancel
+                    </button>
+                  </div>
                 </div>
               </form>
             </div>
@@ -47,11 +48,7 @@
         </div>
       </div>
     </div>
-
   </div>
-
-
-
   <br>
   <br>
   <br>
