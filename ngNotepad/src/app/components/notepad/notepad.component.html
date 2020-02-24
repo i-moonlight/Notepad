@@ -11,7 +11,7 @@
             </h4>
 
             <hr />
-            <form #newNoteForm="ngForm" ngNativeValidate id="newNote-form" class="text-center">
+            <form #newNoteForm="ngForm" ngNativeValidate id="newNote-form" class="text-left">
               <div class="newNote-form-main-message"></div>
               <div class="main-newNote-form">
                 <div class="newNote-group">
@@ -22,7 +22,7 @@
                   </div>
                   <div class="form-group">
                     <label class="text-left" for="text">Text
-                      <textarea rows="4" cols="35" type="text" class="form-control" id="text" name="text"
+                      <textarea rows="4" cols="38" type="text" class="form-control" id="text" name="text"
                         placeholder="text" ngModel required></textarea></label>
                   </div>
                 </div>
@@ -51,7 +51,7 @@
             </h4>
 
             <hr />
-            <form #updateNoteForm="ngForm" ngNativeValidate id="newNote-form" class="text-center">
+            <form #updateNoteForm="ngForm" ngNativeValidate id="newNote-form" class="text-left">
               <div class="newNote-form-main-message"></div>
               <div class="main-newNote-form">
                 <div class="newNote-group">
@@ -62,7 +62,7 @@
                   </div>
                   <div class="form-group">
                     <label class="text-left" for="text">Text
-                      <textarea rows="4" cols="35" type="text" class="form-control" id="text" name="text"
+                      <textarea rows="4" cols="38" type="text" class="form-control" id="text" name="text"
                         [(ngModel)]="selectedNote.text" required></textarea></label>
                   </div>
                 </div>
