@@ -36,30 +36,51 @@ public class UserServiceImpl implements UserService {
 
 		User loggedInUser = findUserByUsername(username);
 
-		if (loggedInUser != null && loggedInUser.getUsername().equalsIgnoreCase(user.getUsername())) {
+		if (loggedInUser != null) {
+			if (isEmailUniqueOrCurrent(user, username)) {
 
-			if (user.getEmail() != null) {
-				loggedInUser.setEmail(user.getEmail());
+				if (user.getEmail() != null) {
+					loggedInUser.setEmail(user.getEmail());
+				}
+
+				if (user.getFirstName() != null) {
+					loggedInUser.setFirstName(user.getFirstName());
+				}
+
+				if (user.getLastName() != null) {
+					loggedInUser.setLastName(user.getLastName());
+				}
+
+				if (user.getRole() != null) {
+					loggedInUser.setRole(user.getRole());
+				}
+
+				userRepo.saveAndFlush(loggedInUser);
+
+				return loggedInUser;
 			}
-
-			if (user.getFirstName() != null) {
-				loggedInUser.setFirstName(user.getFirstName());
-			}
-
-			if (user.getLastName() != null) {
-				loggedInUser.setLastName(user.getLastName());
-			}
-
-			if (user.getRole() != null) {
-				loggedInUser.setRole(user.getRole());
-			}
-
-			userRepo.saveAndFlush(loggedInUser);
-
-			return loggedInUser;
 		}
 
 		return null;
+	}
+
+	private boolean isEmailUniqueOrCurrent(User user, String username) {
+
+		User testEmail = userRepo.findUserByEmail(user.getEmail());
+
+		User loggedInUser = userRepo.findUserByUsername(username);
+
+		if (testEmail == null) {
+			return true;
+		}
+
+		if (testEmail.equals(loggedInUser)) {
+			if (testEmail.getEmail().equals(user.getEmail())) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 }
