@@ -1,0 +1,75 @@
+<div>
+  <div>
+    <div class="container update-form-1">
+      <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+          <div class="card rounded shadow shadow-sm">
+            <div class="card-body">
+              <h4 class="card-title text-center mb-0">
+                <strong>Update Account</strong>
+              </h4>
+              <hr />
+              <div *ngIf="updateFailed === true">
+                <h6 class="errorText text-center mb-0">Sorry, please try to register again. Username or email is already
+                  in use.</h6>
+              </div>
+              <form #updateForm="ngForm" ngNativeValidate id="update-form" class="text-center">
+                <div class="update-form-main-message"></div>
+                <div class="main-update-form">
+                  <div class="update-group">
+                    <div class="form-group">
+                      <label class="text-left" for="firstName">First Name
+                        <input type="text" class="form-control" id="firstName" name="firstName"
+                          [(ngModel)]="user.firstName " required /></label>
+                    </div>
+                    <div class="form-group">
+                      <label class="text-left" for="lastName">Last Name
+                        <input type="text" class="form-control" id="lastName" name="lastName"
+                          [(ngModel)]="user.lastName " required /></label>
+                    </div>
+                    <div class="form-group">
+                      <label class="text-left" for="email">Email
+                        <input type="text" class="form-control" id="email" name="email" [(ngModel)]="user.email "
+                          required /></label>
+                    </div>
+                  </div>
+                  <hr />
+                  <button type="submit" class="login-button btn btn-dark" (click)="editUserInfo(updateForm)">
+                    update
+                  </button>
+                  <button type="submit" class="login-button btn btn-warning" [routerLink]="['/users']">
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+</div>

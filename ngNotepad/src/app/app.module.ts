@@ -23,6 +23,7 @@ import { DatePipe } from '@angular/common';
 import { UserService } from './services/user.service';
 import { FooterComponent } from './components/footer/footer.component';
 import { NotepadComponent } from './components/notepad/notepad.component';
+import { ProfileUpdateComponent } from './components/profile-update/profile-update.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { NotepadComponent } from './components/notepad/notepad.component';
     AdminComponent,
     NotFoundComponent,
     FooterComponent,
-    NotepadComponent
+    NotepadComponent,
+    ProfileUpdateComponent
   ],
   imports: [
     BrowserModule,
