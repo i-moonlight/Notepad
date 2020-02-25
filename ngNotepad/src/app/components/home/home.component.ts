@@ -11,6 +11,10 @@ export class HomeComponent implements OnInit {
   constructor(private authSvc: AuthService) { }
 
   ngOnInit() {
+    console.log('Welcome! This was built by Vinton Lee, III');
+    console.log('Want to build something great?!');
+    console.log('Email me at vinton.e.lee@gmail.com');
+    console.log('vintonlee.dev');
   }
 
   userLogInCheck() {

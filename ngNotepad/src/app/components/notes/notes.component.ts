@@ -13,7 +13,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
   styleUrls: ['./notes.component.css']
 })
 export class NotesComponent implements OnInit {
-  user: User;
+  user: User = new User();
   notes = [];
   selected = null;
 
@@ -22,7 +22,7 @@ export class NotesComponent implements OnInit {
   ngOnInit() {
     this.authSvc.getUserByUsername(this.authSvc.getLoggedInUsername()).subscribe(
       good => {
-        this.user = good;
+        this.user = Object.assign(this.user, good);
       },
       error => {
         this.router.navigateByUrl('/login');
