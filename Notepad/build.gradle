@@ -2,7 +2,10 @@ plugins {
 	id 'org.springframework.boot' version '2.2.4.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
+	id 'org.hidetake.ssh' version '2.9.0'
 }
+
+apply plugin: 'org.hidetake.ssh'
 
 group = 'dev.vintonlee'
 version = '0.0.1-SNAPSHOT'
@@ -36,8 +39,33 @@ dependencies {
 	testImplementation("org.junit.jupiter:junit-jupiter:$junit5Version")
 	testCompile group: 'junit', name: 'junit', version: '4.12'
 	implementation ('org.springframework.boot:spring-boot-starter-tomcat')
+	runtime group: 'org.hidetake', name: 'groovy-ssh', version: '2.9.0'
 }
 
 test {
 	useJUnitPlatform()
+}
+
+remotes {
+  ec2host {
+    host = '3.132.229.160' // Change this to you EC2 host's public IP
+    user = 'ec2-user'
+    identity = file("${System.properties['user.home']}/.ssh/aws.pem")
+  }
+}
+
+task deploy(dependsOn: war, group: 'build') {
+  description = 'Deploy WAR file to remote server'
+  ssh.settings {
+    knownHosts = addHostKey(file("${System.properties['user.home']}/.ssh/known_hosts"))
+  }  
+  doLast {
+    logger.lifecycle("Deploying $war.archivePath to $remotes.ec2host.host")
+    ssh.run {
+      session(remotes.ec2host) {
+        put from: war.archivePath.absolutePath, into: '/var/lib/tomcat8/webapps'
+        logger.lifecycle("WAR file deployed to $remotes.ec2host.host")
+      }
+    }
+  }
 }
