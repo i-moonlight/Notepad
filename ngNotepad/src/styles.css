@@ -1,7 +1,9 @@
 @import "~bootstrap/dist/css/bootstrap.css";
+@import url("https://fonts.googleapis.com/css?family=Nunito&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Varela+Round&display=swap");
 
 body {
-  font-family: Nunito;
+  font-family: "Nunito", Arial, Helvetica, sans-serif;
   letter-spacing: 0.0625em;
 }
 
@@ -34,6 +36,12 @@ body {
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
+}
+
+.masthead h2 {
+  color: rgb(0, 0, 0);
+  max-width: 20rem;
+  font-size: 1rem;
 }
 
 .notePad {
