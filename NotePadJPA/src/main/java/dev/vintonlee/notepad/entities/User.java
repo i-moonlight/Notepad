@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class User {
@@ -60,11 +60,11 @@ public class User {
 	@Column(name = "last_name")
 	private String lastName;
 
-	@JsonIgnoreProperties({ "user" })
+	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<Note> notes;
 
-	@JsonIgnoreProperties({ "user", "note" })
+	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<Image> images;
 

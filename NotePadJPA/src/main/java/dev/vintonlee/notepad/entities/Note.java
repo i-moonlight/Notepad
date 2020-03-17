@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Note {
@@ -53,8 +53,8 @@ public class Note {
 	@ManyToOne()
 	@JoinColumn(name = "user_id")
 	private User user;
-	
-	@JsonIgnoreProperties({ "user", "note" })
+
+	@JsonIgnore
 	@OneToMany(mappedBy = "note")
 	private List<Image> images;
 
