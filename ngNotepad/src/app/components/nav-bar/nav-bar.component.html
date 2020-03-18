@@ -1,6 +1,6 @@
 <nav id="nav" class="navbar navbar-expand-sm navbar-dark bg-secondary">
   <a class="nav-item nav-link showHand notePad" [routerLink]="['/home']"
-    (click)="isCollapsed = true"><strong>NotePad</strong><span class="sr-only">(current)</span></a>
+    (click)="isCollapsed = true"><strong>{{title}}</strong><span class="sr-only">(current)</span></a>
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
     data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
     aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed">

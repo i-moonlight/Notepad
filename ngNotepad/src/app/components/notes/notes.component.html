@@ -17,7 +17,9 @@
 
   <div *ngIf="notes.length > 0">
     <div class="card" *ngFor="let note of notes">
-      <h5 class="card-header">Note: {{note.title}}</h5>
+      <h4 class="card-header"> Note: {{note.title}} <span *ngIf="note.starred == true" class="star">&#9733;</span>
+      </h4>
+      <h6 class="card-header text-left">{{note.updatedAt | date: 'MMMM d, y, h:mm a' }}</h6>
       <div class="card-body">
         <p class="card-text">{{note.text}}</p>
         <div class="btn-group">

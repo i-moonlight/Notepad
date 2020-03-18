@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NavBarComponent implements OnInit {
   public isCollapsed = true;
+  title = 'NOTEPAD';
 
   constructor(private authSvc: AuthService, private router: Router) { }
 

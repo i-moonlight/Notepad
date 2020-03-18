@@ -25,6 +25,12 @@
                       <textarea rows="4" cols="38" type="text" class="form-control" id="text" name="text"
                         placeholder="text" ngModel required></textarea></label>
                   </div>
+                  <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" value="true" id="starred" name="starred"
+                        ngModel><span class="star">&#9733;</span>
+                    </label>
+                  </div>
                 </div>
                 <hr />
                 <div class="btn-group">
@@ -64,6 +70,12 @@
                     <label class="text-left" for="text">Text
                       <textarea rows="4" cols="38" type="text" class="form-control" id="text" name="text"
                         [(ngModel)]="selectedNote.text" required></textarea></label>
+                  </div>
+                  <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" value="true" id="starred" name="starred"
+                        [(ngModel)]="selectedNote.starred"><span class="star">&#9733;</span>
+                    </label>
                   </div>
                 </div>
                 <hr />
