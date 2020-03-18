@@ -4,7 +4,7 @@
 
 * This project is in development. 
 
-This program is designed to be a full-stack REST and AJAX software application that creates, reads, updates and deletes user and note data from a database built using MySQL Workbench and connecting with using Java Database Connectivity.
+This program is designed to be a full-stack software application that creates, reads, updates and deletes user and note data from a database built using MySQL Workbench and connecting with using Java Database Connectivity.
 
 ### Technologies used or planned to use:
 
