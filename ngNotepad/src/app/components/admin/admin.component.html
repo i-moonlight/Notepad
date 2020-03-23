@@ -1,7 +1,8 @@
 <div class="container-fluid">
   <br />
   <br />
-  <h2 class="text-center">Registered Users {{countUsers}}</h2>
+  <h2 class="text-center">Registered Users: {{countUsers}}, Active Users: {{countEnabledUsers}}, Deactivated Users:
+    {{countDisabledUsers}}</h2>
   <br>
   <div class="container update-form-1" *ngFor="let user of users">
     <div class="row">
@@ -18,7 +19,7 @@
             <hr />
             <div class="btn-group">
               <button class="btn btn-warning btn-sm" *ngIf='user.enabled == true && user.role != "admin"'
-                (click)='disableUser(user)'>Disable User</button>
+                (click)='disableUser(user)'>Deactivate User</button>
               <button class="btn btn-dark btn-sm" *ngIf='user.enabled == false' (click)='enableUser(user)'>Enable
                 User</button>
             </div>

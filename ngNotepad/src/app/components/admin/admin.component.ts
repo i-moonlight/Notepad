@@ -13,6 +13,8 @@ import { UserService } from 'src/app/services/user.service';
 export class AdminComponent implements OnInit {
   user: User;
   countUsers = 0;
+  countEnabledUsers = 0;
+  countDisabledUsers = 0;
   users: User[] = [];
 
   constructor(private authSvc: AuthService, private router: Router, private noteSvc: NotesService, private userSvc: UserService) { }
@@ -37,12 +39,19 @@ export class AdminComponent implements OnInit {
   indexUsers() {
     this.users = [];
     this.countUsers = 0;
+    this.countEnabledUsers = 0;
+    this.countDisabledUsers = 0;
 
     this.userSvc.indexAdmin().subscribe(
       success => {
         success.forEach(userSuccess => {
           this.users.push(userSuccess);
           this.countUsers++;
+          if (userSuccess.enabled === true) {
+            this.countEnabledUsers++;
+          } else {
+            this.countDisabledUsers++;
+          }
         });
       },
       failure => { }
