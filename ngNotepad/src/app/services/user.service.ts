@@ -18,7 +18,7 @@ export class UserService {
 
   // LIST of USERS for ADMIN **********
 
-  public index() {
+  public indexAdmin() {
     if (localStorage.length === 0) {
       this.router.navigateByUrl('/login');
     }

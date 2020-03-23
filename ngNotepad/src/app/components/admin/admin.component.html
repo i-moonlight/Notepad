@@ -1,1 +1,6 @@
-<p>admin works!</p>
+<div class="container-fluid">
+  <h2>Registered Users {{countUsers}}</h2>
+  <div *ngFor="let user of users">
+    <h4>{{user.firstName}}</h4>
+  </div>
+</div>
