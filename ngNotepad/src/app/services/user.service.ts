@@ -84,7 +84,7 @@ export class UserService {
     );
   }
 
-  public updateUserAsUser(user) {
+  public updateUserAsUser(user: User) {
     this.checkUserInLocalStorage();
 
     const httpOptions = this.setHttpOptions();

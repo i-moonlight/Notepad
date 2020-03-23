@@ -1,6 +1,31 @@
 <div class="container-fluid">
-  <h2>Registered Users {{countUsers}}</h2>
-  <div *ngFor="let user of users">
-    <h4>{{user.firstName}}</h4>
+  <br />
+  <br />
+  <h2 class="text-center">Registered Users {{countUsers}}</h2>
+  <br>
+  <div class="container update-form-1" *ngFor="let user of users">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card rounded shadow shadow-sm">
+          <div class="card-body">
+            <h4 class="card-title text-center mb-0">
+              <strong>{{user.firstName}} {{user.lastName}}</strong>
+            </h4>
+            <hr />
+            <h4 class="card-body text-left mb-0 ">Username: {{user.username}}</h4>
+            <h4 class="card-body text-left mb-0 ">Email: {{user.email}}</h4>
+            <h4 class="card-body text-left mb-0  ">Last updated: {{user.updatedAt | date}}</h4>
+            <hr />
+            <div class="btn-group">
+              <button class="btn btn-warning btn-sm" *ngIf='user.enabled == true && user.role != "admin"'
+                (click)='disableUser(user)'>Disable User</button>
+              <button class="btn btn-dark btn-sm" *ngIf='user.enabled == false' (click)='enableUser(user)'>Enable
+                User</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
   </div>
 </div>

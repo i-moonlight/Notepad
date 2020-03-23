@@ -12,4 +12,6 @@ public interface UserService {
 
 	User updateUserProfile(String name, User user);
 
+	User adminUpdateUserProfile(String username, User user);
+
 }

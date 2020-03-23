@@ -12,7 +12,6 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class AdminComponent implements OnInit {
   user: User;
-  countNotes = 0;
   countUsers = 0;
   users: User[] = [];
 
@@ -36,6 +35,9 @@ export class AdminComponent implements OnInit {
   }
 
   indexUsers() {
+    this.users = [];
+    this.countUsers = 0;
+
     this.userSvc.indexAdmin().subscribe(
       success => {
         success.forEach(userSuccess => {
@@ -44,6 +46,32 @@ export class AdminComponent implements OnInit {
         });
       },
       failure => { }
+    );
+  }
+
+  disableUser(userIn: User) {
+    const userToDisable: User = userIn;
+
+    userToDisable.enabled = false;
+
+    this.userSvc.updateUserAsAdmin(userToDisable).subscribe(
+      success => {
+        this.indexUsers();
+      },
+      fail => { }
+    );
+  }
+
+  enableUser(userIn: User) {
+    const userToEnable: User = userIn;
+
+    userToEnable.enabled = true;
+
+    this.userSvc.updateUserAsAdmin(userToEnable).subscribe(
+      success => {
+        this.indexUsers();
+      },
+      fail => { }
     );
   }
 

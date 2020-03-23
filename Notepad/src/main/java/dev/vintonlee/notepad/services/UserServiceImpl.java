@@ -55,6 +55,10 @@ public class UserServiceImpl implements UserService {
 					loggedInUser.setRole(user.getRole());
 				}
 
+				if (user.getEnabled() != null) {
+					loggedInUser.setEnabled(user.getEnabled());
+				}
+
 				userRepo.saveAndFlush(loggedInUser);
 
 				return loggedInUser;
@@ -62,6 +66,20 @@ public class UserServiceImpl implements UserService {
 		}
 
 		return null;
+	}
+
+	@Override
+	public User adminUpdateUserProfile(String username, User user) {
+
+		User admin = findUserByUsername(username);
+
+		if (admin.getRole().equalsIgnoreCase("admin")) {
+			userRepo.saveAndFlush(user);
+			return user;
+		}
+
+		return null;
+
 	}
 
 	private boolean isEmailUniqueOrCurrent(User user, String username) {
