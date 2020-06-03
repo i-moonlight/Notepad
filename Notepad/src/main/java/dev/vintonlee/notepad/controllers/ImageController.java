@@ -36,7 +36,7 @@ public class ImageController {
 		if (images == null) {
 			resp.setStatus(404);
 		}
-		if (images != null && images.size() == 0) {
+		if (images != null && images.isEmpty()) {
 			resp.setStatus(204);
 		}
 
@@ -64,7 +64,7 @@ public class ImageController {
 		if (images == null) {
 			resp.setStatus(401);
 		}
-		if (images != null && images.size() == 0) {
+		if (images != null && images.isEmpty()) {
 			resp.setStatus(204);
 		}
 
@@ -124,7 +124,7 @@ public class ImageController {
 
 		try {
 			image = imageSvc.destroyImage(imageId, principal.getName());
-			if (image == false) {
+			if (!image) {
 				resp.setStatus(404);
 				return null;
 			}

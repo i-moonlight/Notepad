@@ -36,7 +36,7 @@ public class NoteController {
 		if (notes == null) {
 			resp.setStatus(404);
 		}
-		if (notes != null && notes.size() == 0) {
+		if (notes != null && notes.isEmpty()) {
 			resp.setStatus(204);
 		}
 
@@ -64,7 +64,7 @@ public class NoteController {
 		if (notes == null) {
 			resp.setStatus(401);
 		}
-		if (notes != null && notes.size() == 0) {
+		if (notes != null && notes.isEmpty()) {
 			resp.setStatus(204);
 		}
 
