@@ -35,7 +35,7 @@ public class UserController {
 			resp.setStatus(403);
 		}
 
-		if (users != null && users.size() == 0) {
+		if (users != null && users.isEmpty()) {
 			resp.setStatus(204);
 		}
 

@@ -36,33 +36,26 @@ public class UserServiceImpl implements UserService {
 
 		User loggedInUser = findUserByUsername(username);
 
-		if (loggedInUser != null) {
-			if (isEmailUniqueOrCurrent(user, username)) {
-
-				if (user.getEmail() != null) {
-					loggedInUser.setEmail(user.getEmail());
-				}
-
-				if (user.getFirstName() != null) {
-					loggedInUser.setFirstName(user.getFirstName());
-				}
-
-				if (user.getLastName() != null) {
-					loggedInUser.setLastName(user.getLastName());
-				}
-
-				if (user.getRole() != null) {
-					loggedInUser.setRole(user.getRole());
-				}
-
-				if (user.getEnabled() != null) {
-					loggedInUser.setEnabled(user.getEnabled());
-				}
-
-				userRepo.saveAndFlush(loggedInUser);
-
-				return loggedInUser;
+		if (loggedInUser != null && isEmailUniqueOrCurrent(user, username)) {
+			if (user.getEmail() != null) {
+				loggedInUser.setEmail(user.getEmail());
 			}
+			if (user.getFirstName() != null) {
+				loggedInUser.setFirstName(user.getFirstName());
+			}
+			if (user.getLastName() != null) {
+				loggedInUser.setLastName(user.getLastName());
+			}
+			if (user.getRole() != null) {
+				loggedInUser.setRole(user.getRole());
+			}
+			if (user.getEnabled() != null) {
+				loggedInUser.setEnabled(user.getEnabled());
+			}
+
+			userRepo.saveAndFlush(loggedInUser);
+
+			return loggedInUser;
 		}
 
 		return null;
