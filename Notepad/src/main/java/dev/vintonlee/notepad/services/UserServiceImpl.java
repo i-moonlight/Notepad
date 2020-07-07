@@ -15,9 +15,9 @@ public class UserServiceImpl implements UserService {
 	private UserRepository userRepo;
 
 	@Override
-	public List<User> findAll(String username) {
+	public List<User> findAll(final String username) {
 
-		User loggedInUser = userRepo.findUserByUsername(username);
+		final User loggedInUser = userRepo.findUserByUsername(username);
 
 		if (loggedInUser != null && loggedInUser.getRole().equalsIgnoreCase("admin")) {
 			return userRepo.findAll();
@@ -27,14 +27,14 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User findUserByUsername(String username) {
+	public User findUserByUsername(final String username) {
 		return userRepo.findUserByUsername(username);
 	}
 
 	@Override
-	public User updateUserProfile(String username, User user) {
+	public User updateUserProfile(final String username, final User user) {
 
-		User loggedInUser = findUserByUsername(username);
+		final User loggedInUser = findUserByUsername(username);
 
 		if (loggedInUser != null && isEmailUniqueOrCurrent(user, username)) {
 			if (user.getEmail() != null) {
@@ -62,9 +62,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User adminUpdateUserProfile(String username, User user) {
+	public User adminUpdateUserProfile(final String username, final User user) {
 
-		User admin = findUserByUsername(username);
+		final User admin = findUserByUsername(username);
 
 		if (admin.getRole().equalsIgnoreCase("admin")) {
 			userRepo.saveAndFlush(user);
@@ -75,23 +75,17 @@ public class UserServiceImpl implements UserService {
 
 	}
 
-	private boolean isEmailUniqueOrCurrent(User user, String username) {
+	private boolean isEmailUniqueOrCurrent(final User user, final String username) {
 
-		User testEmail = userRepo.findUserByEmail(user.getEmail());
+		final User testEmail = userRepo.findUserByEmail(user.getEmail());
 
-		User loggedInUser = userRepo.findUserByUsername(username);
+		final User loggedInUser = userRepo.findUserByUsername(username);
 
 		if (testEmail == null) {
 			return true;
 		}
 
-		if (testEmail.equals(loggedInUser)) {
-			if (testEmail.getEmail().equals(user.getEmail())) {
-				return true;
-			}
-		}
-
-		return false;
+		return testEmail.equals(loggedInUser) && testEmail.getEmail().equals(user.getEmail());
 	}
 
 }

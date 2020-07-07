@@ -21,9 +21,9 @@ public class NoteServiceImpl implements NoteService {
 	private NoteRepository noteRepo;
 
 	@Override
-	public List<Note> findAllNotes(String username) {
+	public List<Note> findAllNotes(final String username) {
 
-		User loggedInUser = userRepo.findUserByUsername(username);
+		final User loggedInUser = userRepo.findUserByUsername(username);
 
 		if (loggedInUser != null && loggedInUser.getRole().equalsIgnoreCase("admin")) {
 			return noteRepo.findAll();
@@ -33,9 +33,9 @@ public class NoteServiceImpl implements NoteService {
 	}
 
 	@Override
-	public List<Note> findAllNotesByUser(String username) {
+	public List<Note> findAllNotesByUser(final String username) {
 
-		User loggedInUser = userRepo.findUserByUsername(username);
+		final User loggedInUser = userRepo.findUserByUsername(username);
 
 		if (loggedInUser != null) {
 			return noteRepo.findAllByUserOrderByUpdatedAtAsc(loggedInUser);
@@ -45,12 +45,12 @@ public class NoteServiceImpl implements NoteService {
 	}
 
 	@Override
-	public Note findNoteByUsernameAndId(String username, int noteId) {
-		User loggedInUser = userRepo.findUserByUsername(username);
+	public Note findNoteByUsernameAndId(final String username, final int noteId) {
+		final User loggedInUser = userRepo.findUserByUsername(username);
 		Note note = new Note();
 
 		if (loggedInUser != null) {
-			Optional<Note> noteOpt = noteRepo.findById(noteId);
+			final Optional<Note> noteOpt = noteRepo.findById(noteId);
 			if (noteOpt.isPresent()) {
 				note = noteOpt.get();
 				if (note.getUser().getId() == loggedInUser.getId()) {
@@ -65,13 +65,13 @@ public class NoteServiceImpl implements NoteService {
 	}
 
 	@Override
-	public Note createNote(Note note, String username) {
+	public Note createNote(final Note note, final String username) {
 
 		if (note.getTitle().length() <= 0 || note.getText().length() <= 0) {
 			return null;
 		}
 
-		User loggedInUser = userRepo.findUserByUsername(username);
+		final User loggedInUser = userRepo.findUserByUsername(username);
 
 		if (loggedInUser != null) {
 			note.setUser(loggedInUser);
@@ -82,12 +82,12 @@ public class NoteServiceImpl implements NoteService {
 	}
 
 	@Override
-	public Note updateNote(Note note, String username) {
-		User loggedInUser = userRepo.findUserByUsername(username);
+	public Note updateNote(final Note note, final String username) {
+		final User loggedInUser = userRepo.findUserByUsername(username);
 		Note managedNote = new Note();
 
 		if (loggedInUser != null) {
-			Optional<Note> noteOpt = noteRepo.findById(note.getId());
+			final Optional<Note> noteOpt = noteRepo.findById(note.getId());
 			if (noteOpt.isPresent()) {
 				managedNote = noteOpt.get();
 			}
@@ -115,10 +115,10 @@ public class NoteServiceImpl implements NoteService {
 	}
 
 	@Override
-	public boolean destroyNote(int noteId, String username) {
-		User loggedInUser = userRepo.findUserByUsername(username);
+	public boolean destroyNote(final int noteId, final String username) {
+		final User loggedInUser = userRepo.findUserByUsername(username);
 
-		Note managedNote = new Note();
+		Note managedNote;
 		if (loggedInUser != null) {
 			managedNote = noteRepo.getOne(noteId);
 
