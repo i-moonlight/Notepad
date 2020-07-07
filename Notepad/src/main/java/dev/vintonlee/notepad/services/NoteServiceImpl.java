@@ -91,7 +91,7 @@ public class NoteServiceImpl implements NoteService {
 			if (noteOpt.isPresent()) {
 				managedNote = noteOpt.get();
 			}
-			if (managedNote != null) {
+			if (managedNote != null && managedNote.getUser() != null) {
 				if (loggedInUser.getId() == managedNote.getUser().getId()) {
 
 					if (note.getTitle() != null) {
