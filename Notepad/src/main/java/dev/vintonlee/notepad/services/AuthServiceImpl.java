@@ -16,10 +16,10 @@ public class AuthServiceImpl implements AuthService {
 	private PasswordEncoder encoder;
 
 	@Override
-	public User register(User user) {
+	public User register(final User user) {
 
 		if (isUserUnique(user)) {
-			String encodedPW = encoder.encode(user.getPassword());
+			final String encodedPW = encoder.encode(user.getPassword());
 			user.setPassword(encodedPW); // only persist encoded password
 
 			user.setEnabled(true);
@@ -32,14 +32,14 @@ public class AuthServiceImpl implements AuthService {
 		return null;
 	}
 
-	private boolean isUserUnique(User user) {
+	private boolean isUserUnique(final User user) {
 
-		User uniqueUsername = userRepo.findUserByUsername(user.getUsername());
+		final User uniqueUsername = userRepo.findUserByUsername(user.getUsername());
 
 		if (uniqueUsername == null) {
 			return false;
 		}
-		User uniqueEmail = userRepo.findUserByEmail(user.getEmail());
+		final User uniqueEmail = userRepo.findUserByEmail(user.getEmail());
 
 		if (uniqueEmail == null) {
 			return false;

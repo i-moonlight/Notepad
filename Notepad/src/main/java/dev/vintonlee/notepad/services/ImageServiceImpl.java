@@ -21,8 +21,8 @@ public class ImageServiceImpl implements ImageService {
 	private UserRepository userRepo;
 
 	@Override
-	public List<Image> findAllImages(String username) {
-		User user = userRepo.findUserByUsername(username);
+	public List<Image> findAllImages(final String username) {
+		final User user = userRepo.findUserByUsername(username);
 
 		if (user.getRole().equalsIgnoreCase("admin")) {
 			return imageRepo.findAll();
@@ -32,8 +32,8 @@ public class ImageServiceImpl implements ImageService {
 	}
 
 	@Override
-	public List<Image> findAllImagesByUser(String username) {
-		User user = userRepo.findUserByUsername(username);
+	public List<Image> findAllImagesByUser(final String username) {
+		final User user = userRepo.findUserByUsername(username);
 
 		if (user != null) {
 			return imageRepo.findAllByUser(user);
@@ -43,14 +43,13 @@ public class ImageServiceImpl implements ImageService {
 	}
 
 	@Override
-	public Image findImagesByUsernameAndId(String username, int imageId) {
-		User user = userRepo.findUserByUsername(username);
+	public Image findImagesByUsernameAndId(final String username, final int imageId) {
+		final User user = userRepo.findUserByUsername(username);
 
 		if (user != null) {
-			Optional<Image> imageOpt = imageRepo.findById(imageId);
+			final Optional<Image> imageOpt = imageRepo.findById(imageId);
 			if (imageOpt.isPresent()) {
-				Image image = imageOpt.get();
-				return image;
+				return imageOpt.get();
 			}
 		}
 
@@ -58,12 +57,12 @@ public class ImageServiceImpl implements ImageService {
 	}
 
 	@Override
-	public Image createImage(Image image, String username) {
+	public Image createImage(final Image image, final String username) {
 		if (image == null) {
 			return null;
 		}
 
-		User user = userRepo.findUserByUsername(username);
+		final User user = userRepo.findUserByUsername(username);
 
 		if (user != null) {
 			image.setUser(user);
@@ -74,17 +73,17 @@ public class ImageServiceImpl implements ImageService {
 	}
 
 	@Override
-	public Image updateImage(Image image, String username) {
+	public Image updateImage(final Image image, final String username) {
 		if (image == null || image.getUrlLink() == null) {
 			return null;
 		}
 
-		User user = userRepo.findUserByUsername(username);
+		final User user = userRepo.findUserByUsername(username);
 
 		if (user != null) {
-			Optional<Image> imageOpt = imageRepo.findById(image.getId());
+			final Optional<Image> imageOpt = imageRepo.findById(image.getId());
 			if (imageOpt.isPresent()) {
-				Image managedImage = imageOpt.get();
+				final Image managedImage = imageOpt.get();
 
 				if (managedImage.getUser().equals(user)) {
 					managedImage.setUrlLink(image.getUrlLink());
@@ -97,17 +96,17 @@ public class ImageServiceImpl implements ImageService {
 	}
 
 	@Override
-	public boolean destroyImage(int imageId, String username) {
+	public boolean destroyImage(final int imageId, final String username) {
 		if (imageId <= 2) {
 			return false;
 		}
 
-		User user = userRepo.findUserByUsername(username);
+		final User user = userRepo.findUserByUsername(username);
 
 		if (user != null) {
-			Optional<Image> imageOpt = imageRepo.findById(imageId);
+			final Optional<Image> imageOpt = imageRepo.findById(imageId);
 			if (imageOpt.isPresent()) {
-				Image image = imageOpt.get();
+				final Image image = imageOpt.get();
 				if (image.getUser().equals(user) || user.getRole().equalsIgnoreCase("admin")) {
 					imageRepo.delete(image);
 					return true;
