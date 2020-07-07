@@ -29,9 +29,10 @@ public class NoteController {
 	private NoteService noteSvc;
 
 	@GetMapping("notes")
-	public List<Note> findAllNotesByUser(HttpServletRequest req, HttpServletResponse resp, Principal principal) {
+	public List<Note> findAllNotesByUser(final HttpServletRequest req, final HttpServletResponse resp,
+			final Principal principal) {
 
-		List<Note> notes = noteSvc.findAllNotesByUser(principal.getName());
+		final List<Note> notes = noteSvc.findAllNotesByUser(principal.getName());
 
 		if (notes == null) {
 			resp.setStatus(404);
@@ -44,10 +45,10 @@ public class NoteController {
 	}
 
 	@GetMapping("notes/{noteId}")
-	public Note findAllNotesByUsernameandNoteId(@PathVariable("noteId") Integer noteId, HttpServletRequest req,
-			HttpServletResponse resp, Principal principal) {
+	public Note findAllNotesByUsernameandNoteId(@PathVariable("noteId") final Integer noteId,
+			final HttpServletRequest req, final HttpServletResponse resp, final Principal principal) {
 
-		Note note = noteSvc.findNoteByUsernameAndId(principal.getName(), noteId);
+		final Note note = noteSvc.findNoteByUsernameAndId(principal.getName(), noteId);
 
 		if (note == null) {
 			resp.setStatus(404);
@@ -57,9 +58,9 @@ public class NoteController {
 	}
 
 	@GetMapping("notes/admin")
-	public List<Note> findAll(HttpServletRequest req, HttpServletResponse resp, Principal principal) {
+	public List<Note> findAll(final HttpServletRequest req, final HttpServletResponse resp, final Principal principal) {
 
-		List<Note> notes = noteSvc.findAllNotes(principal.getName());
+		final List<Note> notes = noteSvc.findAllNotes(principal.getName());
 
 		if (notes == null) {
 			resp.setStatus(401);
@@ -72,8 +73,8 @@ public class NoteController {
 	}
 
 	@PostMapping("notes")
-	public Note createNote(@RequestBody Note note, HttpServletRequest req, Principal principal,
-			HttpServletResponse resp) {
+	public Note createNote(@RequestBody Note note, final HttpServletRequest req, final Principal principal,
+			final HttpServletResponse resp) {
 
 		try {
 			note = noteSvc.createNote(note, principal.getName());
@@ -82,10 +83,10 @@ public class NoteController {
 				return null;
 			}
 			resp.setStatus(202);
-			StringBuffer url = req.getRequestURL();
+			final StringBuffer url = req.getRequestURL();
 			url.append("/").append(note.getId());
 			resp.addHeader("Location", url.toString());
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			e.printStackTrace();
 			resp.setStatus(400);
 			return null;
@@ -95,8 +96,8 @@ public class NoteController {
 	}
 
 	@PutMapping("notes")
-	public Note updateNote(@RequestBody Note note, HttpServletRequest req, Principal principal,
-			HttpServletResponse resp) {
+	public Note updateNote(@RequestBody Note note, final HttpServletRequest req, final Principal principal,
+			final HttpServletResponse resp) {
 
 		try {
 			note = noteSvc.updateNote(note, principal.getName());
@@ -105,10 +106,10 @@ public class NoteController {
 				return null;
 			}
 			resp.setStatus(202);
-			StringBuffer url = req.getRequestURL();
+			final StringBuffer url = req.getRequestURL();
 			url.append("/").append(note.getId());
 			resp.addHeader("Location", url.toString());
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			e.printStackTrace();
 			resp.setStatus(400);
 			return null;
@@ -118,8 +119,8 @@ public class NoteController {
 	}
 
 	@DeleteMapping("notes/{noteId}")
-	public Note destroyNote(@PathVariable("noteId") int noteId, HttpServletRequest req, Principal principal,
-			HttpServletResponse resp) {
+	public Note destroyNote(@PathVariable("noteId") final int noteId, final HttpServletRequest req,
+			final Principal principal, final HttpServletResponse resp) {
 		boolean note = false;
 
 		try {
@@ -130,7 +131,7 @@ public class NoteController {
 			}
 			resp.setStatus(202);
 
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			e.printStackTrace();
 			resp.setStatus(400);
 			return null;

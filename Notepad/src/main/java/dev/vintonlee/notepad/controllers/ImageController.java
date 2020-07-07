@@ -29,9 +29,10 @@ public class ImageController {
 	private ImageService imageSvc;
 
 	@GetMapping("images")
-	public List<Image> findAllImagesByUser(HttpServletRequest req, HttpServletResponse resp, Principal principal) {
+	public List<Image> findAllImagesByUser(final HttpServletRequest req, final HttpServletResponse resp,
+			final Principal principal) {
 
-		List<Image> images = imageSvc.findAllImagesByUser(principal.getName());
+		final List<Image> images = imageSvc.findAllImagesByUser(principal.getName());
 
 		if (images == null) {
 			resp.setStatus(404);
@@ -44,10 +45,10 @@ public class ImageController {
 	}
 
 	@GetMapping("images/{imageId}")
-	public Image findAllImagesByUsernameandImageId(@PathVariable("imageId") Integer imageId, HttpServletRequest req,
-			HttpServletResponse resp, Principal principal) {
+	public Image findAllImagesByUsernameandImageId(@PathVariable("imageId") final Integer imageId,
+			final HttpServletRequest req, final HttpServletResponse resp, final Principal principal) {
 
-		Image image = imageSvc.findImagesByUsernameAndId(principal.getName(), imageId);
+		final Image image = imageSvc.findImagesByUsernameAndId(principal.getName(), imageId);
 
 		if (image == null) {
 			resp.setStatus(404);
@@ -57,9 +58,10 @@ public class ImageController {
 	}
 
 	@GetMapping("images/admin")
-	public List<Image> findAll(HttpServletRequest req, HttpServletResponse resp, Principal principal) {
+	public List<Image> findAll(final HttpServletRequest req, final HttpServletResponse resp,
+			final Principal principal) {
 
-		List<Image> images = imageSvc.findAllImages(principal.getName());
+		final List<Image> images = imageSvc.findAllImages(principal.getName());
 
 		if (images == null) {
 			resp.setStatus(401);
@@ -72,8 +74,8 @@ public class ImageController {
 	}
 
 	@PostMapping("images")
-	public Image createImage(@RequestBody Image image, HttpServletRequest req, Principal principal,
-			HttpServletResponse resp) {
+	public Image createImage(@RequestBody Image image, final HttpServletRequest req, final Principal principal,
+			final HttpServletResponse resp) {
 
 		try {
 			image = imageSvc.createImage(image, principal.getName());
@@ -82,10 +84,10 @@ public class ImageController {
 				return null;
 			}
 			resp.setStatus(202);
-			StringBuffer url = req.getRequestURL();
+			final StringBuffer url = req.getRequestURL();
 			url.append("/").append(image.getId());
 			resp.addHeader("Location", url.toString());
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			e.printStackTrace();
 			resp.setStatus(400);
 			return null;
@@ -95,8 +97,8 @@ public class ImageController {
 	}
 
 	@PutMapping("images")
-	public Image updateImage(@RequestBody Image image, HttpServletRequest req, Principal principal,
-			HttpServletResponse resp) {
+	public Image updateImage(@RequestBody Image image, final HttpServletRequest req, final Principal principal,
+			final HttpServletResponse resp) {
 
 		try {
 			image = imageSvc.updateImage(image, principal.getName());
@@ -105,10 +107,10 @@ public class ImageController {
 				return null;
 			}
 			resp.setStatus(202);
-			StringBuffer url = req.getRequestURL();
+			final StringBuffer url = req.getRequestURL();
 			url.append("/").append(image.getId());
 			resp.addHeader("Location", url.toString());
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			e.printStackTrace();
 			resp.setStatus(400);
 			return null;
@@ -118,8 +120,8 @@ public class ImageController {
 	}
 
 	@DeleteMapping("images/{imageId}")
-	public Image destroyImage(@PathVariable("imageId") int imageId, HttpServletRequest req, Principal principal,
-			HttpServletResponse resp) {
+	public Image destroyImage(@PathVariable("imageId") final int imageId, final HttpServletRequest req,
+			final Principal principal, final HttpServletResponse resp) {
 		boolean image = false;
 
 		try {
@@ -130,7 +132,7 @@ public class ImageController {
 			}
 			resp.setStatus(202);
 
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			e.printStackTrace();
 			resp.setStatus(400);
 			return null;
