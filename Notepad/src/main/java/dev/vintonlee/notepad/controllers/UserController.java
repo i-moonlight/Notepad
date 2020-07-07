@@ -27,9 +27,9 @@ public class UserController {
 	private UserService userSvc;
 
 	@GetMapping("users")
-	public List<User> findAll(HttpServletRequest req, HttpServletResponse resp, Principal principal) {
+	public List<User> findAll(final HttpServletRequest req, final HttpServletResponse resp, final Principal principal) {
 
-		List<User> users = userSvc.findAll(principal.getName());
+		final List<User> users = userSvc.findAll(principal.getName());
 
 		if (users == null) {
 			resp.setStatus(403);
@@ -43,8 +43,8 @@ public class UserController {
 	}
 
 	@GetMapping("users/{username}")
-	public User getExistingUserByUsername(@PathVariable String username, HttpServletRequest req, Principal principal,
-			HttpServletResponse resp) {
+	public User getExistingUserByUsername(@PathVariable final String username, final HttpServletRequest req,
+			final Principal principal, final HttpServletResponse resp) {
 		User user = null;
 
 		try {
@@ -54,7 +54,7 @@ public class UserController {
 				return null;
 			}
 			resp.setStatus(202);
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			e.printStackTrace();
 			resp.setStatus(400);
 			return null;
@@ -64,8 +64,8 @@ public class UserController {
 	}
 
 	@PutMapping("users")
-	public User userUpdateExistingUser(@RequestBody User user, HttpServletRequest req, Principal principal,
-			HttpServletResponse resp) {
+	public User userUpdateExistingUser(@RequestBody User user, final HttpServletRequest req, final Principal principal,
+			final HttpServletResponse resp) {
 
 		try {
 			user = userSvc.updateUserProfile(principal.getName(), user);
@@ -74,10 +74,10 @@ public class UserController {
 				return null;
 			}
 			resp.setStatus(202);
-			StringBuffer url = req.getRequestURL();
+			final StringBuffer url = req.getRequestURL();
 			url.append("/").append(user.getId());
 			resp.addHeader("Location", url.toString());
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			e.printStackTrace();
 			resp.setStatus(400);
 			return null;
@@ -87,8 +87,8 @@ public class UserController {
 	}
 
 	@PutMapping("users/admin")
-	public User adminUpdateExistingUser(@RequestBody User user, HttpServletRequest req, Principal principal,
-			HttpServletResponse resp) {
+	public User adminUpdateExistingUser(@RequestBody User user, final HttpServletRequest req, final Principal principal,
+			final HttpServletResponse resp) {
 
 		try {
 			user = userSvc.adminUpdateUserProfile(principal.getName(), user);
@@ -97,10 +97,10 @@ public class UserController {
 				return null;
 			}
 			resp.setStatus(202);
-			StringBuffer url = req.getRequestURL();
+			final StringBuffer url = req.getRequestURL();
 			url.append("/").append(user.getId());
 			resp.addHeader("Location", url.toString());
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			e.printStackTrace();
 			resp.setStatus(400);
 			return null;

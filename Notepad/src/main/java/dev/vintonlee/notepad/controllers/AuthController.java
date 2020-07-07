@@ -22,7 +22,7 @@ public class AuthController {
 	private AuthService authSrv;
 
 	@PostMapping(path = "/register")
-	public User register(@RequestBody User user, HttpServletResponse res) {
+	public User register(@RequestBody User user, final HttpServletResponse res) {
 
 		if (user == null) {
 			res.setStatus(400);
@@ -38,7 +38,7 @@ public class AuthController {
 	}
 
 	@GetMapping(path = "/authenticate")
-	public Principal authenticate(Principal principal) {
+	public Principal authenticate(final Principal principal) {
 		return principal;
 	}
 
