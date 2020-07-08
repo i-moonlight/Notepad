@@ -41,6 +41,9 @@ dependencies {
   	compile "org.hibernate:hibernate-core:$hibernateVersion"
   	compile "org.hibernate:hibernate-c3p0:$hibernateVersion"
   	testImplementation("org.junit.jupiter:junit-jupiter:$junit5Version")
+  	
+  	
+  	compileOnly "org.projectlombok:lombok:1.16.12"
 }
 
 test {

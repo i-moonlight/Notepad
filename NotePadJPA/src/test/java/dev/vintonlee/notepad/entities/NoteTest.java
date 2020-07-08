@@ -1,6 +1,8 @@
 package dev.vintonlee.notepad.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -50,13 +52,13 @@ class NoteTest {
 		assertTrue(note.getStarred());
 		assertNull(note.getCreatedAt());
 	}
-	
+
 	@Test
 	@DisplayName("Test relationship with user")
 	void test2() {
-		assertEquals("admin@notes.com", note.getUser().getEmail());
+		assertEquals("admin@admin.com", note.getUser().getEmail());
 	}
-	
+
 	@Test
 	@DisplayName("Test relationship with user")
 	void test3() {
